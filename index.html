@@ -16,7 +16,7 @@
             <ul class="nav-links">
                 <li><a href="#challenges">챌린지</a></li>
                 <li><a href="#feed">인증 피드</a></li>
-                <li><a href="#community">커뮤니티</a></li>
+                <li><a href="#partnership">제휴 문의</a></li>
                 <li><a href="#" class="btn-login">로그인</a></li>
             </ul>
         </nav>
@@ -119,6 +119,44 @@
                 </div>
             </div>
         </section>
+
+        <!-- 제휴 문의 -->
+        <section id="partnership" class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center-mobile" style="flex-direction: column; align-items: center; text-align: center;">
+                    <h2>제휴 문의</h2>
+                    <p class="sub-text">HobbyHub와 함께 성장할 파트너를 기다립니다.</p>
+                </div>
+                <div class="contact-form-container">
+                    <form action="https://formspree.io/f/xqegzbeg" method="POST" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">이름/기업명</label>
+                                <input type="text" name="name" id="name" placeholder="홍길동" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">이메일 주소</label>
+                                <input type="email" name="email" id="email" placeholder="example@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">문의 유형</label>
+                            <select name="subject" id="subject">
+                                <option value="partnership">비즈니스 제휴</option>
+                                <option value="ad">광고 문의</option>
+                                <option value="content">콘텐츠 협업</option>
+                                <option value="other">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">상세 내용</label>
+                            <textarea name="message" id="message" placeholder="제휴 제안 내용을 상세히 입력해주세요." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">문의하기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
@@ -126,6 +164,7 @@
             <div class="footer-content">
                 <div class="footer-logo">Hobby<span>Hub</span></div>
                 <div class="footer-links">
+                    <a href="#partnership">제휴 문의</a>
                     <a href="#">이용약관</a>
                     <a href="#">개인정보처리방침</a>
                     <a href="#">고객센터</a>
