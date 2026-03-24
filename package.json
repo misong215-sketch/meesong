@@ -1,0 +1,23 @@
+{
+  "name": "meesong",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misong215-sketch/meesong.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misong215-sketch/meesong/issues"
+  },
+  "homepage": "https://github.com/misong215-sketch/meesong#readme",
+  "description": "",
+  "devDependencies": {
+    "wrangler": "^4.77.0"
+  }
+}
