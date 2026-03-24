@@ -3,103 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEESONG | Premium Woodcraft & Design</title>
+    <title>MEESONG | Minimal Sudoku</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="container">
-            <div class="logo">MEESONG</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Crafting Timeless <br><span>Fine Pine</span> Pieces</h1>
-                <p>Bespoke woodwork that brings the essence of nature into your modern living space.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary">View Collection</a>
-                    <a href="#contact" class="btn btn-secondary">Get a Quote</a>
-                </div>
+    <div class="game-container">
+        <header>
+            <h1>SUDOKU</h1>
+            <div class="stats">
+                <span id="difficulty-label">Easy</span> | <span id="timer">00:00</span>
             </div>
-        </section>
+        </header>
 
-        <section id="about" class="section">
-            <div class="container grid">
-                <div class="section-text">
-                    <h2 class="section-title">Our Heritage</h2>
-                    <p>MEESONG (Fine Pine) is rooted in the tradition of meticulous craftsmanship. We believe that wood is not just a material, but a living story that deserves to be told with respect and artistry.</p>
-                    <p>Every piece we create is a testament to the enduring beauty of natural materials and the skilled hands that shape them.</p>
-                </div>
-                <div class="section-image placeholder">
-                    <!-- Placeholder for image -->
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="section bg-light">
-            <div class="container">
-                <h2 class="section-title text-center">What We Do</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="icon">🪑</div>
-                        <h3>Custom Furniture</h3>
-                        <p>Designed to fit your space and your style, each piece is uniquely yours.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="icon">🏠</div>
-                        <h3>Interior Accents</h3>
-                        <p>Elevate your home with handcrafted wooden details and decor.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="icon">🪵</div>
-                        <h3>Material Sourcing</h3>
-                        <p>We use only the finest, sustainably sourced pine and hardwoods.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <h2 class="section-title text-center">Let's Create Together</h2>
-                <div class="contact-wrapper">
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="4" placeholder="How can we help?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-full">Send Inquiry</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-logo">MEESONG</div>
-            <p>&copy; 2026 MEESONG Woodcraft. All rights reserved.</p>
+        <div id="sudoku-board" class="sudoku-board">
+            <!-- 81 cells will be generated by JS -->
         </div>
-    </footer>
+
+        <div class="controls">
+            <div class="number-pad">
+                <button class="num-btn" data-value="1">1</button>
+                <button class="num-btn" data-value="2">2</button>
+                <button class="num-btn" data-value="3">3</button>
+                <button class="num-btn" data-value="4">4</button>
+                <button class="num-btn" data-value="5">5</button>
+                <button class="num-btn" data-value="6">6</button>
+                <button class="num-btn" data-value="7">7</button>
+                <button class="num-btn" data-value="8">8</button>
+                <button class="num-btn" data-value="9">9</button>
+                <button class="num-btn" data-value="erase">⌫</button>
+            </div>
+
+            <div class="action-btns">
+                <button id="new-game-btn" class="btn btn-primary">New Game</button>
+                <button id="hint-btn" class="btn btn-secondary">Hint</button>
+                <button id="check-btn" class="btn btn-secondary">Check</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="victory-modal" class="modal">
+        <div class="modal-content">
+            <h2>Congratulations!</h2>
+            <p>You've solved the puzzle in <span id="final-time"></span></p>
+            <button id="modal-new-game" class="btn btn-primary">Play Again</button>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
