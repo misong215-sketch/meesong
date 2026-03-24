@@ -59,9 +59,10 @@ const results = {
 
 let currentQuestionIndex = 0;
 let scoreA = 0;
+let lastActiveSection = 'start-screen';
 
 function startTest() {
-    document.getElementById('start-screen').classList.remove('active');
+    hideAllSections();
     document.getElementById('test-screen').classList.add('active');
     showQuestion();
 }
@@ -72,19 +73,14 @@ function showQuestion() {
     document.getElementById('btnA').innerText = question.a;
     document.getElementById('btnB').innerText = question.b;
     
-    // Progress update
     const percent = ((currentQuestionIndex + 1) / questions.length) * 100;
     document.getElementById('progress').style.width = percent + '%';
     document.getElementById('page-count').innerText = `${currentQuestionIndex + 1}/${questions.length}`;
 }
 
 function nextQuestion(answer) {
-    if (answer === 'A') {
-        scoreA++;
-    }
-
+    if (answer === 'A') scoreA++;
     currentQuestionIndex++;
-
     if (currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
@@ -93,25 +89,19 @@ function nextQuestion(answer) {
 }
 
 function showResult() {
-    document.getElementById('test-screen').classList.remove('active');
+    hideAllSections();
     document.getElementById('result-screen').classList.add('active');
 
     let resultType;
-    if (scoreA === 5) {
-        resultType = results.hot;
-    } else if (scoreA >= 3) {
-        resultType = results.sunlight;
-    } else if (scoreA >= 1) {
-        resultType = results.lukewarm;
-    } else {
-        resultType = results.ice;
-    }
+    if (scoreA === 5) resultType = results.hot;
+    else if (scoreA >= 3) resultType = results.sunlight;
+    else if (scoreA >= 1) resultType = results.lukewarm;
+    else resultType = results.ice;
 
     document.getElementById('result-title').innerText = resultType.title;
     document.getElementById('result-badge').innerText = resultType.badge;
     document.getElementById('result-summary').innerText = resultType.summary;
     
-    // Theme color update
     document.querySelector('.subtitle').style.color = resultType.color;
     document.getElementById('result-title').style.color = resultType.color;
 
@@ -127,11 +117,31 @@ function showResult() {
 function restartTest() {
     currentQuestionIndex = 0;
     scoreA = 0;
-    document.getElementById('result-screen').classList.remove('active');
+    hideAllSections();
     document.getElementById('start-screen').classList.add('active');
 }
 
 function shareResult() {
-    // Simple alert for demo, could be replaced with actual share API
     alert("결과가 복사되었습니다! 친구들에게 공유해보세요.");
+}
+
+// Contact functions
+function showContact() {
+    // Save the current section to return to it later
+    const activeSection = document.querySelector('section.active');
+    if (activeSection) {
+        lastActiveSection = activeSection.id;
+    }
+    hideAllSections();
+    document.getElementById('contact-screen').classList.add('active');
+}
+
+function hideContact() {
+    hideAllSections();
+    document.getElementById(lastActiveSection).classList.add('active');
+}
+
+function hideAllSections() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.remove('active'));
 }
