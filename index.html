@@ -1,14 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEESONG | Premium Woodcraft & Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">MEESONG</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Crafting Timeless <br><span>Fine Pine</span> Pieces</h1>
+                <p>Bespoke woodwork that brings the essence of nature into your modern living space.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">View Collection</a>
+                    <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container grid">
+                <div class="section-text">
+                    <h2 class="section-title">Our Heritage</h2>
+                    <p>MEESONG (Fine Pine) is rooted in the tradition of meticulous craftsmanship. We believe that wood is not just a material, but a living story that deserves to be told with respect and artistry.</p>
+                    <p>Every piece we create is a testament to the enduring beauty of natural materials and the skilled hands that shape them.</p>
+                </div>
+                <div class="section-image placeholder">
+                    <!-- Placeholder for image -->
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">What We Do</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">🪑</div>
+                        <h3>Custom Furniture</h3>
+                        <p>Designed to fit your space and your style, each piece is uniquely yours.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🏠</div>
+                        <h3>Interior Accents</h3>
+                        <p>Elevate your home with handcrafted wooden details and decor.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🪵</div>
+                        <h3>Material Sourcing</h3>
+                        <p>We use only the finest, sustainably sourced pine and hardwoods.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title text-center">Let's Create Together</h2>
+                <div class="contact-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">MEESONG</div>
+            <p>&copy; 2026 MEESONG Woodcraft. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
