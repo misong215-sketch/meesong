@@ -1,217 +1,109 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const boardElement = document.getElementById('sudoku-board');
-    const timerElement = document.getElementById('timer');
-    const newGameBtn = document.getElementById('new-game-btn');
-    const hintBtn = document.getElementById('hint-btn');
-    const checkBtn = document.getElementById('check-btn');
-    const numButtons = document.querySelectorAll('.num-btn');
-    const victoryModal = document.getElementById('victory-modal');
-    const finalTimeElement = document.getElementById('final-time');
-    const modalNewGameBtn = document.getElementById('modal-new-game');
+    const feedContainer = document.getElementById('auth-feed');
+    const authModal = document.getElementById('auth-modal');
+    const floatingBtn = document.getElementById('floating-auth-btn');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const authForm = document.getElementById('auth-form');
 
-    let board = [];
-    let solution = [];
-    let selectedCell = null;
-    let timer = 0;
-    let timerInterval = null;
+    // 초기 가상 피드 데이터
+    const initialFeeds = [
+        { user: '민수', challenge: '운동', text: '오늘도 스쿼트 100개 완료! 허벅지가 타는 것 같아요 😂', time: '방금 전' },
+        { user: '지은', challenge: '독서', text: '데미안 50페이지 읽었습니다. 문장이 너무 아름다워요.', time: '5분 전' },
+        { user: '철수', challenge: '자기계발', text: '경제 뉴스 3개 요약 완료. 환율이 계속 오르네요.', time: '12분 전' },
+        { user: '유리', challenge: '운동', text: '아침 조깅 5km 성공! 공기가 상쾌해요.', time: '20분 전' }
+    ];
 
-    // Initialize Game
-    function initGame() {
-        createBoard();
-        startNewGame();
-        setupEventListeners();
+    // 피드 렌더링 함수
+    function renderFeeds(data) {
+        feedContainer.innerHTML = '';
+        data.forEach(item => {
+            const feedItem = document.createElement('div');
+            feedItem.className = 'feed-item';
+            feedItem.innerHTML = `
+                <div class="user-info">
+                    <div class="avatar"></div>
+                    <span class="username">${item.user}</span>
+                </div>
+                <p class="feed-text">${item.text}</p>
+                <div class="feed-meta">
+                    <span class="challenge-tag">#${item.challenge}</span>
+                    <span class="time">${item.time}</span>
+                </div>
+            `;
+            feedContainer.prepend(feedItem);
+        });
     }
 
-    function createBoard() {
-        boardElement.innerHTML = '';
-        for (let i = 0; i < 81; i++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            cell.dataset.index = i;
-            cell.addEventListener('click', () => selectCell(cell));
-            boardElement.appendChild(cell);
+    renderFeeds(initialFeeds);
+
+    // 모달 제어
+    floatingBtn.addEventListener('click', () => {
+        authModal.style.display = 'flex';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        authModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === authModal) authModal.style.display = 'none';
+    });
+
+    // 인증 폼 제출
+    authForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const challenge = document.getElementById('challenge-select').value;
+        const text = document.getElementById('auth-text').value;
+
+        if (!text) {
+            alert('인증 내용을 입력해주세요!');
+            return;
         }
-    }
 
-    function startNewGame() {
-        timer = 0;
-        clearInterval(timerInterval);
-        updateTimer();
-        timerInterval = setInterval(() => {
-            timer++;
-            updateTimer();
-        }, 1000);
+        // 새 피드 추가
+        const newFeed = {
+            user: '나(User)',
+            challenge: challenge.split('!')[0].trim(),
+            text: text,
+            time: '방금 전'
+        };
 
-        generateSudoku();
-        renderBoard();
-        victoryModal.style.display = 'none';
-    }
-
-    function updateTimer() {
-        const mins = Math.floor(timer / 60).toString().padStart(2, '0');
-        const secs = (timer % 60).toString().padStart(2, '0');
-        timerElement.textContent = `${mins}:${secs}`;
-    }
-
-    // Sudoku Logic (Simplified Generator)
-    function generateSudoku() {
-        // Base solution (shuffled)
-        solution = solveSudoku(Array(81).fill(0));
-        board = [...solution];
+        const feedItem = document.createElement('div');
+        feedItem.className = 'feed-item';
+        feedItem.style.border = '2px solid #ff7e5f'; // 강조
+        feedItem.innerHTML = `
+            <div class="user-info">
+                <div class="avatar" style="background: #ff7e5f"></div>
+                <span class="username">${newFeed.user}</span>
+            </div>
+            <p class="feed-text">${newFeed.text}</p>
+            <div class="feed-meta">
+                <span class="challenge-tag">#${newFeed.challenge}</span>
+                <span class="time">${newFeed.time}</span>
+            </div>
+        `;
         
-        // Remove cells based on difficulty (Easy: 40-45 kept)
-        const cellsToRemove = 40;
-        let removed = 0;
-        while (removed < cellsToRemove) {
-            const idx = Math.floor(Math.random() * 81);
-            if (board[idx] !== 0) {
-                board[idx] = 0;
-                removed++;
-            }
-        }
-    }
-
-    function solveSudoku(grid) {
-        const s = [...grid];
-        function isValid(g, idx, val) {
-            const row = Math.floor(idx / 9);
-            const col = idx % 9;
-            for (let i = 0; i < 9; i++) {
-                if (g[row * 9 + i] === val || g[i * 9 + col] === val) return false;
-            }
-            const boxRow = Math.floor(row / 3) * 3;
-            const boxCol = Math.floor(col / 3) * 3;
-            for (let i = 0; i < 3; i++) {
-                for (let j = 0; j < 3; j++) {
-                    if (g[(boxRow + i) * 9 + (boxCol + j)] === val) return false;
-                }
-            }
-            return true;
-        }
-
-        function backtrack(g) {
-            for (let i = 0; i < 81; i++) {
-                if (g[i] === 0) {
-                    const nums = [1,2,3,4,5,6,7,8,9].sort(() => Math.random() - 0.5);
-                    for (let n of nums) {
-                        if (isValid(g, i, n)) {
-                            g[i] = n;
-                            if (backtrack(g)) return true;
-                            g[i] = 0;
-                        }
-                    }
-                    return false;
-                }
-            }
-            return true;
-        }
-        backtrack(s);
-        return s;
-    }
-
-    function renderBoard() {
-        const cells = document.querySelectorAll('.cell');
-        cells.forEach((cell, i) => {
-            cell.textContent = board[i] === 0 ? '' : board[i];
-            cell.className = 'cell';
-            if (board[i] !== 0) cell.classList.add('given');
-        });
-    }
-
-    function selectCell(cell) {
-        if (selectedCell) selectedCell.classList.remove('selected');
-        selectedCell = cell;
-        selectedCell.classList.add('selected');
-        highlightRelated(parseInt(cell.dataset.index));
-    }
-
-    function highlightRelated(idx) {
-        const cells = document.querySelectorAll('.cell');
-        const row = Math.floor(idx / 9);
-        const col = idx % 9;
-        const boxRow = Math.floor(row / 3) * 3;
-        const boxCol = Math.floor(col / 3) * 3;
-
-        cells.forEach((cell, i) => {
-            cell.classList.remove('highlight');
-            const r = Math.floor(i / 9);
-            const c = i % 9;
-            const br = Math.floor(r / 3) * 3;
-            const bc = Math.floor(c / 3) * 3;
-
-            if (r === row || c === col || (br === boxRow && bc === boxCol)) {
-                cell.classList.add('highlight');
-            }
-        });
-    }
-
-    function handleInput(val) {
-        if (!selectedCell || selectedCell.classList.contains('given')) return;
+        feedContainer.prepend(feedItem);
         
-        const idx = parseInt(selectedCell.dataset.index);
-        if (val === 'erase') {
-            board[idx] = 0;
-            selectedCell.textContent = '';
-            selectedCell.classList.remove('user', 'error');
-        } else {
-            const num = parseInt(val);
-            board[idx] = num;
-            selectedCell.textContent = num;
-            selectedCell.classList.add('user');
-            selectedCell.classList.remove('error');
-            
-            if (checkWin()) {
-                endGame();
+        // 초기화 및 닫기
+        authForm.reset();
+        authModal.style.display = 'none';
+        
+        // 부드러운 스크롤로 피드로 이동
+        document.getElementById('feed').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // 부드러운 스크롤
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
             }
-        }
-    }
-
-    function checkWin() {
-        if (board.includes(0)) return false;
-        for (let i = 0; i < 81; i++) {
-            if (board[i] !== solution[i]) return false;
-        }
-        return true;
-    }
-
-    function endGame() {
-        clearInterval(timerInterval);
-        finalTimeElement.textContent = timerElement.textContent;
-        victoryModal.style.display = 'flex';
-    }
-
-    function setupEventListeners() {
-        numButtons.forEach(btn => {
-            btn.addEventListener('click', () => handleInput(btn.dataset.value));
         });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key >= '1' && e.key <= '9') handleInput(e.key);
-            if (e.key === 'Backspace' || e.key === 'Delete') handleInput('erase');
-        });
-
-        newGameBtn.addEventListener('click', startNewGame);
-        modalNewGameBtn.addEventListener('click', startNewGame);
-
-        hintBtn.addEventListener('click', () => {
-            if (!selectedCell || selectedCell.textContent !== '') return;
-            const idx = parseInt(selectedCell.dataset.index);
-            handleInput(solution[idx].toString());
-        });
-
-        checkBtn.addEventListener('click', () => {
-            const cells = document.querySelectorAll('.cell');
-            cells.forEach((cell, i) => {
-                if (board[i] !== 0 && !cell.classList.contains('given')) {
-                    if (board[i] !== solution[i]) {
-                        cell.classList.add('error');
-                    } else {
-                        cell.classList.remove('error');
-                    }
-                }
-            });
-        });
-    }
-
-    initGame();
+    });
 });
