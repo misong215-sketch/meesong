@@ -5,15 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.querySelector('.close-modal');
     const authForm = document.getElementById('auth-form');
 
-    // 초기 가상 피드 데이터 (댓글 데이터 추가)
+    // 초기 가상 피드 데이터
     const initialFeeds = [
         { id: 1, user: '민수', challenge: '운동', text: '오늘도 스쿼트 100개 완료! 허벅지가 타는 것 같아요 😂', time: '방금 전', comments: ['와 대단해요!', '저도 오늘 스쿼트 도전!'] },
         { id: 2, user: '지은', challenge: '독서', text: '데미안 50페이지 읽었습니다. 문장이 너무 아름다워요.', time: '5분 전', comments: ['저도 좋아하는 책이에요 :)'] },
-        { id: 3, user: '철수', challenge: '자기계발', text: '경제 뉴스 3개 요약 완료. 환율이 계속 오르네요.', time: '12분 전', comments: [] },
-        { id: 4, user: '유리', challenge: '운동', text: '아침 조깅 5km 성공! 공기가 상쾌해요.', time: '20분 전', comments: ['갓생 사시네요 부럽습니다!'] }
+        { id: 3, user: '요리왕', challenge: '요리', text: '오늘 아침은 닭가슴살 샐러드! 건강해지는 기분이에요.', time: '12분 전', comments: ['소스 뭐 쓰셨나요?'] },
+        { id: 4, user: '유리', challenge: '사진', text: '오늘 노을이 정말 예뻐서 찍어봤어요. 힐링되네요.', time: '20분 전', comments: ['와 사진 진짜 잘 찍으시네요!'] }
     ];
 
-    // 피드 렌더링 함수 (댓글 영역 추가)
+    // 피드 렌더링 함수
     function renderFeeds(data) {
         feedContainer.innerHTML = '';
         data.forEach(item => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addFeedItem(item) {
         const feedItem = document.createElement('div');
-        feedItem.className = 'feed-item';
+        feedItem.className = 'feed-item animate-up';
         feedItem.dataset.id = item.id;
         
         let commentsHtml = item.comments.map(c => `<div class="comment-text"><strong>익명:</strong> ${c}</div>`).join('');
@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 엔터키 지원
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') submitBtn.click();
         });
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newFeed = {
             id: Date.now(),
             user: '나(User)',
-            challenge: challenge.split('!')[0].trim(),
+            challenge: challenge,
             text: text,
             time: '방금 전',
             comments: []
@@ -109,14 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         authForm.reset();
         authModal.style.display = 'none';
+        
+        // 피드 섹션으로 부드럽게 이동
         document.getElementById('feed').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // 부드러운 스크롤
+    // 부드러운 스크롤 (헤더 메뉴 클릭 시)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
             if (target) {
                 window.scrollTo({
                     top: target.offsetTop - 70,

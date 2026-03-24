@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HobbyLog | 취미 챌린지 플랫폼</title>
+    <title>HobbyHub | 당신의 취미를 공유하세요</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,9 +12,9 @@
 <body>
     <header class="main-header">
         <nav class="container">
-            <div class="logo">HobbyLog</div>
+            <div class="logo">Hobby<span>Hub</span></div>
             <ul class="nav-links">
-                <li><a href="#challenges">챌린지 탐색</a></li>
+                <li><a href="#challenges">챌린지</a></li>
                 <li><a href="#feed">인증 피드</a></li>
                 <li><a href="#community">커뮤니티</a></li>
                 <li><a href="#" class="btn-login">로그인</a></li>
@@ -26,25 +26,26 @@
         <!-- 히어로 섹션 -->
         <section class="hero">
             <div class="container hero-content">
-                <h1>혼자 하면 작심삼일,<br><span class="highlight">함께 하면 즐거운 취미</span></h1>
-                <p>매일 작은 습관이 당신의 일상을 바꿉니다. 지금 바로 챌린지에 도전하세요!</p>
+                <h1>일상에 색을 더하는<br><span class="highlight">나만의 취미 챌린지</span></h1>
+                <p>매일의 작은 성취가 모여 당신을 만듭니다. 지금 바로 시작해보세요!</p>
                 <div class="hero-btns">
-                    <a href="#challenges" class="btn btn-primary">챌린지 시작하기</a>
+                    <a href="#challenges" class="btn btn-primary">챌린지 탐색</a>
                     <a href="#feed" class="btn btn-secondary">인증 구경하기</a>
                 </div>
             </div>
         </section>
 
-        <!-- 카테고리/인기 챌린지 -->
+        <!-- 인기 챌린지 -->
         <section id="challenges" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>지금 뜨는 인기 챌린지</h2>
-                    <a href="#" class="view-all">전체보기 ></a>
+                    <h2>추천 챌린지</h2>
+                    <a href="#" class="view-all">더보기 ></a>
                 </div>
                 <div class="challenge-grid">
+                    <!-- 운동 -->
                     <div class="challenge-card">
-                        <div class="badge">운동</div>
+                        <div class="badge badge-exercise">운동</div>
                         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80')"></div>
                         <div class="card-info">
                             <h3>오운완! 매일 30분 운동</h3>
@@ -52,22 +53,34 @@
                             <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
                         </div>
                     </div>
+                    <!-- 요리 -->
                     <div class="challenge-card">
-                        <div class="badge">독서</div>
+                        <div class="badge badge-cooking">요리</div>
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=500&q=80')"></div>
+                        <div class="card-info">
+                            <h3>하루 한 끼 건강식 만들기</h3>
+                            <p>512명이 함께하고 있어요</p>
+                            <div class="progress-bar"><div class="progress" style="width: 60%"></div></div>
+                        </div>
+                    </div>
+                    <!-- 독서 -->
+                    <div class="challenge-card">
+                        <div class="badge badge-reading">독서</div>
                         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&q=80')"></div>
                         <div class="card-info">
-                            <h3>하루 10페이지 독서하기</h3>
+                            <h3>매일 10페이지 읽기</h3>
                             <p>1,240명이 함께하고 있어요</p>
                             <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
                         </div>
                     </div>
+                    <!-- 사진 -->
                     <div class="challenge-card">
-                        <div class="badge">자기계발</div>
-                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80')"></div>
+                        <div class="badge badge-photo">사진</div>
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1452721226468-f9c902774a4d?w=500&q=80')"></div>
                         <div class="card-info">
-                            <h3>매일 경제 뉴스 읽기</h3>
-                            <p>432명이 함께하고 있어요</p>
-                            <div class="progress-bar"><div class="progress" style="width: 40%"></div></div>
+                            <h3>오늘의 하늘 기록하기</h3>
+                            <p>328명이 함께하고 있어요</p>
+                            <div class="progress-bar"><div class="progress" style="width: 45%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -77,44 +90,48 @@
         <!-- 실시간 인증 피드 -->
         <section id="feed" class="section bg-light">
             <div class="container">
-                <h2 class="text-center">실시간 인증 피드</h2>
-                <p class="text-center sub-text">방금 올라온 따끈따끈한 취미 활동을 확인하세요!</p>
+                <div class="section-header text-center-mobile">
+                    <h2>실시간 인증 피드</h2>
+                    <p class="sub-text">서로의 열정을 나누며 함께 성장해요!</p>
+                </div>
                 <div id="auth-feed" class="feed-container">
                     <!-- JS로 실시간 피드가 추가될 공간 -->
                 </div>
             </div>
         </section>
 
-        <!-- 소통/커뮤니티 섹션 -->
+        <!-- 커뮤니티 -->
         <section id="community" class="section">
-            <div class="container grid">
+            <div class="container grid-two">
                 <div class="community-text">
-                    <h2>서로 응원하며 끝까지!</h2>
-                    <p>HobbyLog 커뮤니티에서는 혼자가 아닙니다. 댓글로 응원하고 정보를 공유하며 취미를 지속할 수 있는 힘을 얻으세요.</p>
+                    <h2>함께하면 끝까지 갑니다!</h2>
+                    <p>HobbyHub 커뮤니티에서는 혼자가 아닙니다. 댓글로 응원하고 정보를 공유하며 취미를 지속할 수 있는 힘을 얻으세요.</p>
                     <ul class="features">
                         <li>✅ 챌린지 파트너 찾기</li>
                         <li>✅ 전문 멘토의 꿀팁 공유</li>
-                        <li>✅ 오프라인 소모임 연계</li>
+                        <li>✅ 지역별 소모임 연계</li>
                     </ul>
                 </div>
                 <div class="community-visual">
-                    <div class="chat-bubble">"오늘 운동 완료했어요! 너무 뿌듯하네요 💪"</div>
-                    <div class="chat-bubble left">"와 대단해요! 저도 자극받아서 지금 갑니다!"</div>
-                    <div class="chat-bubble">"함께 힘내요! 화이팅!"</div>
+                    <div class="chat-bubble animate-up">"오늘 운동 완료했어요! 💪"</div>
+                    <div class="chat-bubble left animate-up delay-1">"와 대단해요! 저도 자극받아 갑니다!"</div>
+                    <div class="chat-bubble animate-up delay-2">"함께 힘내요! 화이팅!"</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-logo">HobbyLog</div>
-            <div class="footer-links">
-                <a href="#">이용약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">고객센터</a>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Hobby<span>Hub</span></div>
+                <div class="footer-links">
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">고객센터</a>
+                </div>
             </div>
-            <p>&copy; 2026 HobbyLog Inc. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 HobbyHub Inc. All rights reserved.</p>
         </div>
     </footer>
 
@@ -126,14 +143,15 @@
                 <div class="form-group">
                     <label>챌린지 선택</label>
                     <select id="challenge-select">
-                        <option>오운완! 매일 30분 운동</option>
-                        <option>하루 10페이지 독서하기</option>
-                        <option>매일 경제 뉴스 읽기</option>
+                        <option>운동</option>
+                        <option>요리</option>
+                        <option>독서</option>
+                        <option>사진</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>인증 내용</label>
-                    <textarea id="auth-text" placeholder="오늘의 소감을 남겨주세요!"></textarea>
+                    <textarea id="auth-text" placeholder="오늘 어떤 활동을 하셨나요? 소감을 남겨주세요!"></textarea>
                 </div>
                 <div class="modal-btns">
                     <button type="button" class="btn btn-secondary close-modal">취소</button>
@@ -143,7 +161,7 @@
         </div>
     </div>
 
-    <button id="floating-auth-btn" class="floating-btn">인증하기</button>
+    <button id="floating-auth-btn" class="floating-btn">인증</button>
 
     <script src="main.js"></script>
 </body>
