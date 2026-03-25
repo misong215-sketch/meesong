@@ -245,39 +245,31 @@ async function predict() {
         prediction.sort((a, b) => b.probability - a.probability);
         const topResult = prediction[0];
 
-        // Custom descriptions and Images for dog types
+        // Custom descriptions and Images for specific dog breeds (based on model classes)
         const dogData = {
-            "강아지": {
-                desc: "귀염뽀짝! 사랑스러운 강아지상을 가지고 계시네요.",
+            "시바": {
+                desc: "충성심 강하고 귀여운 시바견을 닮으셨네요! 볼살이 매력적일 확률이 높아요.",
+                img: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=500"
+            },
+            "캉갈": {
+                desc: "카리스마 넘치고 든든한 캉갈을 닮으셨네요! 강인한 인상 속에 따뜻한 마음을 가진 분입니다.",
+                img: "https://images.unsplash.com/photo-1625316708582-7c3873423ade?auto=format&fit=crop&q=80&w=500"
+            },
+            "불테리어": {
+                desc: "개성 넘치고 유니크한 매력의 불테리어를 닮으셨네요! 한번 보면 잊혀지지 않는 독보적인 관상입니다.",
+                img: "https://images.unsplash.com/photo-1568393691622-c7ba169d63fe?auto=format&fit=crop&q=80&w=500"
+            },
+            "푸들": {
+                desc: "똑똑하고 애교 많은 푸들을 닮으셨네요! 사교성이 좋고 어디서나 사랑받는 타입입니다.",
+                img: "https://images.unsplash.com/photo-1591768575198-88dac53fbd0a?auto=format&fit=crop&q=80&w=500"
+            },
+            "불독": {
+                desc: "우직하고 신뢰감 있는 불독을 닮으셨네요! 겉은 무뚝뚝해 보여도 알수록 깊은 매력이 있습니다.",
                 img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=500"
-            },
-            "고양이": {
-                desc: "도도하고 매력적인 고양이상을 가지고 계시네요.",
-                img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=500"
-            },
-            "여우": {
-                desc: "날카롭고 세련된 분위기의 여우상을 가지고 계시네요.",
-                img: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&q=80&w=500"
-            },
-            "사슴": {
-                desc: "맑고 선한 눈매의 사슴상을 가지고 계시네요.",
-                img: "https://images.unsplash.com/photo-1543946207-39bd91e70ca7?auto=format&fit=crop&q=80&w=500"
-            },
-            "토끼": {
-                desc: "상큼하고 발랄한 토끼상을 가지고 계시네요.",
-                img: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&q=80&w=500"
-            },
-            "공룡": {
-                desc: "무심한 듯 시크한 매력의 공룡상을 가지고 계시네요.",
-                img: "https://images.unsplash.com/photo-1517923332205-09f98299863c?auto=format&fit=crop&q=80&w=500"
-            },
-            "곰": {
-                desc: "푸근하고 든든한 느낌의 곰상을 가지고 계시네요.",
-                img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=500"
             }
         };
 
-        const currentDog = dogData[topResult.className] || { desc: "매력적인 관상을 가지고 계시네요!", img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=500" };
+        const currentDog = dogData[topResult.className] || { desc: "정말 멋진 강아지 관상을 가지고 계시네요!", img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=500" };
 
         // Switch to result screen
         hideAllSections();
