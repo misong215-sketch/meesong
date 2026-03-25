@@ -193,6 +193,115 @@ function getBallColorClass(num) {
     return 'ball-5';
 }
 
+// AI Dog Face Test Logic
+const TM_MODEL_URL = "https://teachablemachine.withgoogle.com/models/QgnmsWGws/";
+let model, maxPredictions;
+
+async function showAiTest() {
+    hideAllSections();
+    document.getElementById('ai-test-screen').classList.add('active');
+    
+    // Reset preview
+    const preview = document.getElementById('image-preview');
+    preview.innerHTML = '<p>사진을 업로드해주세요</p>';
+    document.getElementById('analyze-btn').style.display = 'none';
+    document.getElementById('image-input').value = '';
+}
+
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const preview = document.getElementById('image-preview');
+        preview.innerHTML = `<img id="uploaded-image" src="${reader.result}" alt="Preview">`;
+        document.getElementById('analyze-btn').style.display = 'block';
+    }
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+async function predict() {
+    const loading = document.getElementById('loading');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const image = document.getElementById('uploaded-image');
+    
+    if (!image) return;
+
+    analyzeBtn.style.display = 'none';
+    loading.style.display = 'block';
+
+    try {
+        // Load model if not loaded
+        if (!model) {
+            const modelURL = TM_MODEL_URL + "model.json";
+            const metadataURL = TM_MODEL_URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+        }
+
+        const prediction = await model.predict(image);
+        
+        // Find best result
+        prediction.sort((a, b) => b.probability - a.probability);
+        const topResult = prediction[0];
+
+        // Custom descriptions for dog types (mapping based on your model classes)
+        const dogDescriptions = {
+            "강아지": "귀염뽀짝! 사랑스러운 강아지상을 가지고 계시네요.",
+            "고양이": "도도하고 매력적인 고양이상을 가지고 계시네요.",
+            "여우": "날카롭고 세련된 분위기의 여우상을 가지고 계시네요.",
+            "사슴": "맑고 선한 눈매의 사슴상을 가지고 계시네요.",
+            "토끼": "상큼하고 발랄한 토끼상을 가지고 계시네요.",
+            "공룡": "무심한 듯 시크한 매력의 공룡상을 가지고 계시네요.",
+            "곰": "푸근하고 든든한 느낌의 곰상을 가지고 계시네요."
+        };
+
+        // Switch to result screen
+        hideAllSections();
+        const resultScreen = document.getElementById('result-screen');
+        resultScreen.classList.add('active');
+
+        document.getElementById('result-title').innerText = `당신은 [${topResult.className}상]`;
+        document.getElementById('result-badge').innerText = getDogEmoji(topResult.className);
+        document.getElementById('result-summary').innerText = dogDescriptions[topResult.className] || "정말 매력적인 관상을 가지고 계시네요!";
+        document.getElementById('result-title').style.color = 'var(--primary-color)';
+
+        // Show probability bars
+        const curationList = document.getElementById('curation-list');
+        curationList.innerHTML = '<h3>📊 분석 상세 결과</h3>';
+        
+        prediction.slice(0, 5).forEach(p => {
+            const prob = (p.probability * 100).toFixed(1);
+            const item = document.createElement('div');
+            item.className = 'result-progress-container';
+            item.innerHTML = `
+                <div class="result-label">
+                    <span>${p.className}</span>
+                    <span>${prob}%</span>
+                </div>
+                <div class="result-bar-bg">
+                    <div class="result-bar" style="width: ${prob}%"></div>
+                </div>
+            `;
+            curationList.appendChild(item);
+        });
+
+    } catch (error) {
+        console.error(error);
+        alert("분석 중 오류가 발생했습니다. 다시 시도해주세요.");
+    } finally {
+        loading.style.display = 'none';
+    }
+}
+
+function getDogEmoji(className) {
+    const emojis = {
+        "강아지": "🐶", "고양이": "🐱", "여우": "🦊", "사슴": "🦌", 
+        "토끼": "🐰", "공룡": "🦖", "곰": "🐻"
+    };
+    return emojis[className] || "✨";
+}
+
 function goHome() {
     hideAllSections();
     document.getElementById('home-screen').classList.add('active');
