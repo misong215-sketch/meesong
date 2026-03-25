@@ -127,16 +127,6 @@ function showResult() {
         else if (scoreA >= 1) result = results.socialite;
         else result = results.worker;
     } else if (activeTestId === 'mbtiTemp') {
-        // MBTI Group Logic
-        // Q1(J/P), Q3(T/F), Q4(S/N), Q5(T/F), Q6(J/P)
-        const isS = userAnswers[3] === 'A';
-        const isN = userAnswers[3] === 'B';
-        const isJ = (userAnswers[0] === 'A' && userAnswers[5] === 'A');
-        const isP = (userAnswers[0] === 'B' && userAnswers[5] === 'B');
-        const isT = (userAnswers[2] === 'A' && userAnswers[4] === 'A');
-        const isF = (userAnswers[2] === 'B' && userAnswers[4] === 'B');
-
-        // Simple scoring for groups
         let sj = 0, nf = 0, sp = 0, nt = 0;
         if (userAnswers[0] === 'A') sj++; else sp++;
         if (userAnswers[2] === 'A') nt++; else nf++;
@@ -163,6 +153,44 @@ function showResult() {
         li.innerText = item;
         curationList.appendChild(li);
     });
+}
+
+// Lotto Logic
+function showLotto() {
+    hideAllSections();
+    document.getElementById('lotto-screen').classList.add('active');
+    // Reset balls
+    const ballsContainer = document.getElementById('lotto-balls');
+    ballsContainer.innerHTML = '<div class="ball-placeholder">?</div>'.repeat(6);
+}
+
+function generateLotto() {
+    const ballsContainer = document.getElementById('lotto-balls');
+    ballsContainer.innerHTML = ''; // Clear
+    
+    let numbers = [];
+    while(numbers.length < 6) {
+        let r = Math.floor(Math.random() * 45) + 1;
+        if(numbers.indexOf(r) === -1) numbers.push(r);
+    }
+    numbers.sort((a, b) => a - b);
+
+    numbers.forEach((num, index) => {
+        setTimeout(() => {
+            const ball = document.createElement('div');
+            ball.className = `ball ${getBallColorClass(num)}`;
+            ball.innerText = num;
+            ballsContainer.appendChild(ball);
+        }, index * 300); // Sequence animation
+    });
+}
+
+function getBallColorClass(num) {
+    if (num <= 10) return 'ball-1';
+    if (num <= 20) return 'ball-2';
+    if (num <= 30) return 'ball-3';
+    if (num <= 40) return 'ball-4';
+    return 'ball-5';
 }
 
 function goHome() {

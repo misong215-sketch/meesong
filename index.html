@@ -38,8 +38,40 @@
                         <p>내 성격은 몇 도일까? MBTI 그룹별 온도 확인</p>
                     </div>
                 </div>
+                <!-- 로또 번호 추첨 추가 -->
+                <div class="test-card lotto-card" onclick="showLotto()">
+                    <div class="test-icon">🎰</div>
+                    <div class="test-info">
+                        <h3>이번 주 행운의 로또 번호</h3>
+                        <p>인생 역전! 나의 행운 숫자를 확인해보세요</p>
+                    </div>
+                </div>
             </div>
             <button class="btn btn-link" onclick="showContact()">🤝 제휴 문의하기</button>
+        </section>
+
+        <!-- 로또 추첨 화면 -->
+        <section id="lotto-screen">
+            <div class="header">
+                <span class="subtitle">LUCKY NUMBER</span>
+                <h1>행운의 로또 추첨</h1>
+            </div>
+            <div class="lotto-container">
+                <div id="lotto-balls" class="lotto-balls">
+                    <div class="ball-placeholder">?</div>
+                    <div class="ball-placeholder">?</div>
+                    <div class="ball-placeholder">?</div>
+                    <div class="ball-placeholder">?</div>
+                    <div class="ball-placeholder">?</div>
+                    <div class="ball-placeholder">?</div>
+                </div>
+                <button class="btn btn-primary" onclick="generateLotto()">번호 추첨하기</button>
+            </div>
+            <div class="revisit-box">
+                <p>✨ 이번 주 당첨의 주인공은 당신입니다! ✨</p>
+                <p class="small">매주 새로운 기운으로 번호를 추첨해드려요.<br><strong>즐겨찾기(Ctrl+D)</strong> 해두고 매주 토요일 전에 방문해보세요!</p>
+            </div>
+            <button class="btn btn-restart" onclick="goHome()">홈으로 돌아가기</button>
         </section>
 
         <!-- 시작 화면 (공통) -->
