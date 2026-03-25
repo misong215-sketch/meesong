@@ -253,11 +253,11 @@ async function predict() {
             },
             "캉갈": {
                 desc: "카리스마 넘치고 든든한 캉갈을 닮으셨네요! 강인한 인상 속에 따뜻한 마음을 가진 분입니다.",
-                img: "https://images.unsplash.com/photo-1625316708582-7c3873423ade?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1533029071511-53630737488c?auto=format&fit=crop&q=80&w=500"
             },
             "불테리어": {
                 desc: "개성 넘치고 유니크한 매력의 불테리어를 닮으셨네요! 한번 보면 잊혀지지 않는 독보적인 관상입니다.",
-                img: "https://images.unsplash.com/photo-1568393691622-c7ba169d63fe?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1534432586043-ead5b99229fb?auto=format&fit=crop&q=80&w=500"
             },
             "푸들": {
                 desc: "똑똑하고 애교 많은 푸들을 닮으셨네요! 사교성이 좋고 어디서나 사랑받는 타입입니다.",
