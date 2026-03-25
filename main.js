@@ -249,23 +249,23 @@ async function predict() {
         const dogData = {
             "시바": {
                 desc: "충성심 강하고 귀여운 시바견을 닮으셨네요! 볼살이 매력적일 확률이 높아요.",
-                img: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=500"
             },
             "캉갈": {
                 desc: "카리스마 넘치고 든든한 캉갈을 닮으셨네요! 강인한 인상 속에 따뜻한 마음을 가진 분입니다.",
-                img: "https://images.unsplash.com/photo-1533029071511-53630737488c?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1560743641-3914f2c45636?auto=format&fit=crop&q=80&w=500"
             },
             "불테리어": {
                 desc: "개성 넘치고 유니크한 매력의 불테리어를 닮으셨네요! 한번 보면 잊혀지지 않는 독보적인 관상입니다.",
-                img: "https://images.unsplash.com/photo-1534432586043-ead5b99229fb?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1510337269632-763d5a763c9b?auto=format&fit=crop&q=80&w=500"
             },
             "푸들": {
                 desc: "똑똑하고 애교 많은 푸들을 닮으셨네요! 사교성이 좋고 어디서나 사랑받는 타입입니다.",
-                img: "https://images.unsplash.com/photo-1591768575198-88dac53fbd0a?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=500"
             },
             "불독": {
                 desc: "우직하고 신뢰감 있는 불독을 닮으셨네요! 겉은 무뚝뚝해 보여도 알수록 깊은 매력이 있습니다.",
-                img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=500"
+                img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=500"
             }
         };
 
