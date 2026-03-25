@@ -33,7 +33,7 @@ body {
     border-radius: var(--border-radius);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     padding: 40px 30px;
-    min-height: 600px;
+    min-height: 700px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -53,6 +53,46 @@ section.active {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Home Screen */
+.test-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.test-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.test-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+.test-icon {
+    font-size: 2.5rem;
+    margin-right: 20px;
+}
+
+.test-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.test-info p {
+    font-size: 0.85rem;
+    color: #777;
 }
 
 /* Common Text Styles */
@@ -180,7 +220,7 @@ p.description {
     word-break: keep-all;
 }
 
-/* Start Screen specific */
+/* Main Image / Icon */
 .main-image {
     flex: 1;
     display: flex;
@@ -190,7 +230,7 @@ p.description {
     margin-bottom: 20px;
 }
 
-/* Result Screen specific */
+/* Result Screen */
 #result-screen {
     text-align: center;
 }
@@ -249,7 +289,7 @@ p.description {
     border-top: 1px solid #eee;
 }
 
-/* Contact Screen Styles */
+/* Contact Screen */
 .contact-form {
     text-align: left;
     margin-bottom: 20px;
