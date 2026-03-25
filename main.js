@@ -294,28 +294,30 @@ async function predict() {
         const curationList = document.getElementById('curation-list');
         curationList.innerHTML = '<h3>📊 각각의 닮은 정도 확인하기</h3>';
         
+        const container = document.createElement('div');
+        container.className = 'ai-result-container';
+
         prediction.slice(0, 5).forEach(p => {
             const prob = (p.probability * 100).toFixed(1);
             const breedInfo = dogData[p.className] || { img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=100" };
             
-            const item = document.createElement('li');
-            item.style.display = 'block'; // Overwrite default flex
+            const item = document.createElement('div');
+            item.className = 'result-bar-item';
             item.innerHTML = `
-                <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <img src="${breedInfo.img}" alt="${p.className}" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 15px; border: 2px solid #eee;">
-                    <div style="flex: 1;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 700; margin-bottom: 5px;">
-                            <span>${p.className}</span>
-                            <span>${prob}%</span>
-                        </div>
-                        <div class="result-bar-bg" style="margin-bottom: 0;">
-                            <div class="result-bar" style="width: ${prob}%"></div>
-                        </div>
+                <div class="result-label">
+                    <div class="result-label-info">
+                        <img src="${breedInfo.img}" alt="${p.className}" class="result-thumbnail">
+                        <span>${p.className}</span>
                     </div>
+                    <span>${prob}%</span>
+                </div>
+                <div class="result-bar-bg">
+                    <div class="result-bar-fill" style="width: ${prob}%"></div>
                 </div>
             `;
-            curationList.appendChild(item);
+            container.appendChild(item);
         });
+        curationList.appendChild(container);
 
     } catch (error) {
         console.error(error);
