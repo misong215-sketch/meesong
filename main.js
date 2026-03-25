@@ -245,16 +245,39 @@ async function predict() {
         prediction.sort((a, b) => b.probability - a.probability);
         const topResult = prediction[0];
 
-        // Custom descriptions for dog types (mapping based on your model classes)
-        const dogDescriptions = {
-            "강아지": "귀염뽀짝! 사랑스러운 강아지상을 가지고 계시네요.",
-            "고양이": "도도하고 매력적인 고양이상을 가지고 계시네요.",
-            "여우": "날카롭고 세련된 분위기의 여우상을 가지고 계시네요.",
-            "사슴": "맑고 선한 눈매의 사슴상을 가지고 계시네요.",
-            "토끼": "상큼하고 발랄한 토끼상을 가지고 계시네요.",
-            "공룡": "무심한 듯 시크한 매력의 공룡상을 가지고 계시네요.",
-            "곰": "푸근하고 든든한 느낌의 곰상을 가지고 계시네요."
+        // Custom descriptions and Images for dog types
+        const dogData = {
+            "강아지": {
+                desc: "귀염뽀짝! 사랑스러운 강아지상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=500"
+            },
+            "고양이": {
+                desc: "도도하고 매력적인 고양이상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=500"
+            },
+            "여우": {
+                desc: "날카롭고 세련된 분위기의 여우상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&q=80&w=500"
+            },
+            "사슴": {
+                desc: "맑고 선한 눈매의 사슴상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1543946207-39bd91e70ca7?auto=format&fit=crop&q=80&w=500"
+            },
+            "토끼": {
+                desc: "상큼하고 발랄한 토끼상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&q=80&w=500"
+            },
+            "공룡": {
+                desc: "무심한 듯 시크한 매력의 공룡상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1517923332205-09f98299863c?auto=format&fit=crop&q=80&w=500"
+            },
+            "곰": {
+                desc: "푸근하고 든든한 느낌의 곰상을 가지고 계시네요.",
+                img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=500"
+            }
         };
+
+        const currentDog = dogData[topResult.className] || { desc: "매력적인 관상을 가지고 계시네요!", img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=500" };
 
         // Switch to result screen
         hideAllSections();
@@ -262,29 +285,37 @@ async function predict() {
         resultScreen.classList.add('active');
 
         document.getElementById('result-title').innerText = `당신은 [${topResult.className}상]`;
-        document.getElementById('result-badge').innerText = getDogEmoji(topResult.className);
-        document.getElementById('result-summary').innerText = dogDescriptions[topResult.className] || "정말 매력적인 관상을 가지고 계시네요!";
+        
+        // Replace emoji badge with Image
+        const badge = document.getElementById('result-badge');
+        badge.innerHTML = `<img src="${currentDog.img}" alt="${topResult.className}" style="width: 100%; max-width: 300px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">`;
+        
+        document.getElementById('result-summary').innerText = currentDog.desc;
         document.getElementById('result-title').style.color = 'var(--primary-color)';
 
         // Show probability bars
         const curationList = document.getElementById('curation-list');
         curationList.innerHTML = '<h3>📊 분석 상세 결과</h3>';
         
+        const container = document.createElement('div');
+        container.className = 'ai-result-container';
+
         prediction.slice(0, 5).forEach(p => {
             const prob = (p.probability * 100).toFixed(1);
             const item = document.createElement('div');
-            item.className = 'result-progress-container';
+            item.className = 'result-bar-item';
             item.innerHTML = `
                 <div class="result-label">
                     <span>${p.className}</span>
                     <span>${prob}%</span>
                 </div>
                 <div class="result-bar-bg">
-                    <div class="result-bar" style="width: ${prob}%"></div>
+                    <div class="result-bar-fill" style="width: ${prob}%"></div>
                 </div>
             `;
-            curationList.appendChild(item);
+            container.appendChild(item);
         });
+        curationList.appendChild(container);
 
     } catch (error) {
         console.error(error);
