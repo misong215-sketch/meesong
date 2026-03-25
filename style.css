@@ -193,6 +193,19 @@ p.description { text-align: center; line-height: 1.6; margin-bottom: 40px; color
 
 #result-screen { text-align: center; }
 .result-badge { font-size: 5rem; margin: 20px 0; }
+.result-image-container {
+    width: 100%;
+    height: 250px;
+    margin: 20px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.result-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .result-desc { background-color: #fff4f4; padding: 20px; border-radius: 15px; margin-bottom: 30px; }
 #result-summary { font-size: 1.05rem; line-height: 1.6; word-break: keep-all; color: #444; }
 .curation-box { text-align: left; margin-bottom: 30px; }
@@ -257,13 +270,9 @@ p.description { text-align: center; line-height: 1.6; margin-bottom: 40px; color
     100% { transform: rotate(360deg); }
 }
 
-.ai-result-container {
+.result-progress-container {
     margin-top: 20px;
     text-align: left;
-}
-
-.result-bar-item {
-    margin-bottom: 15px;
 }
 
 .result-label {
@@ -279,10 +288,11 @@ p.description { text-align: center; line-height: 1.6; margin-bottom: 40px; color
     height: 12px;
     background-color: #eee;
     border-radius: 6px;
+    margin-bottom: 15px;
     overflow: hidden;
 }
 
-.result-bar-fill {
+.result-bar {
     height: 100%;
     background-color: var(--primary-color);
     width: 0%;

@@ -276,38 +276,46 @@ async function predict() {
         const resultScreen = document.getElementById('result-screen');
         resultScreen.classList.add('active');
 
-        document.getElementById('result-title').innerText = `당신은 [${topResult.className}상]`;
+        // Text title hidden or minimized (using image as main title instead)
+        document.getElementById('result-title').innerText = `${topResult.className}상 (일치율 ${(topResult.probability * 100).toFixed(1)}%)`;
         
-        // Replace emoji badge with Image
+        // Main result Image
         const badge = document.getElementById('result-badge');
-        badge.innerHTML = `<img src="${currentDog.img}" alt="${topResult.className}" style="width: 100%; max-width: 300px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">`;
+        badge.innerHTML = `
+            <div class="result-image-container">
+                <img src="${currentDog.img}" alt="${topResult.className}">
+            </div>
+        `;
         
         document.getElementById('result-summary').innerText = currentDog.desc;
         document.getElementById('result-title').style.color = 'var(--primary-color)';
 
-        // Show probability bars
+        // Show probability list with IMAGES
         const curationList = document.getElementById('curation-list');
-        curationList.innerHTML = '<h3>📊 분석 상세 결과</h3>';
+        curationList.innerHTML = '<h3>📊 각각의 닮은 정도 확인하기</h3>';
         
-        const container = document.createElement('div');
-        container.className = 'ai-result-container';
-
         prediction.slice(0, 5).forEach(p => {
             const prob = (p.probability * 100).toFixed(1);
-            const item = document.createElement('div');
-            item.className = 'result-bar-item';
+            const breedInfo = dogData[p.className] || { img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=100" };
+            
+            const item = document.createElement('li');
+            item.style.display = 'block'; // Overwrite default flex
             item.innerHTML = `
-                <div class="result-label">
-                    <span>${p.className}</span>
-                    <span>${prob}%</span>
-                </div>
-                <div class="result-bar-bg">
-                    <div class="result-bar-fill" style="width: ${prob}%"></div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="${breedInfo.img}" alt="${p.className}" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 15px; border: 2px solid #eee;">
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 700; margin-bottom: 5px;">
+                            <span>${p.className}</span>
+                            <span>${prob}%</span>
+                        </div>
+                        <div class="result-bar-bg" style="margin-bottom: 0;">
+                            <div class="result-bar" style="width: ${prob}%"></div>
+                        </div>
+                    </div>
                 </div>
             `;
-            container.appendChild(item);
+            curationList.appendChild(item);
         });
-        curationList.appendChild(container);
 
     } catch (error) {
         console.error(error);
@@ -319,8 +327,7 @@ async function predict() {
 
 function getDogEmoji(className) {
     const emojis = {
-        "강아지": "🐶", "고양이": "🐱", "여우": "🦊", "사슴": "🦌", 
-        "토끼": "🐰", "공룡": "🦖", "곰": "🐻"
+        "시바": "🐕", "캉갈": "🐺", "불테리어": "🐶", "푸들": "🐩", "불독": "🐂"
     };
     return emojis[className] || "✨";
 }
