@@ -3,82 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>국내 여행지 추천 가이드</title>
+    <title>가고 싶은 한국 - 국내 여행지 추천</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <!-- 홈 화면 (여행지 목록) -->
-        <section id="home-screen" class="active">
-            <div class="header">
-                <span class="subtitle">KOREA TRAVEL GUIDE</span>
-                <h1>국내 여행지 추천</h1>
-            </div>
-            <div class="category-filter">
-                <button class="filter-btn active" onclick="filterDestinations('all')">전체</button>
-                <button class="filter-btn" onclick="filterDestinations('city')">도시</button>
-                <button class="filter-btn" onclick="filterDestinations('nature')">자연</button>
-                <button class="filter-btn" onclick="filterDestinations('history')">역사</button>
-            </div>
-            <div class="test-list" id="destination-list">
-                <!-- 여행지 카드가 여기에 동적으로 생성됩니다 -->
-            </div>
-            <button class="btn btn-link" onclick="showContact()">✈️ 여행 문의하기</button>
-        </section>
+    <header>
+        <nav class="container">
+            <div class="logo">K-Traveler</div>
+            <ul class="nav-links">
+                <li><a href="#hero">홈</a></li>
+                <li><a href="#destinations">여행지</a></li>
+                <li><a href="#contact">문의하기</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- 여행지 상세 화면 -->
-        <section id="detail-screen">
-            <div class="header">
-                <span id="detail-category" class="subtitle">카테고리</span>
-                <h1 id="detail-title">여행지 이름</h1>
-            </div>
-            <div class="result-image-container">
-                <img id="detail-image" src="" alt="여행지 이미지">
-            </div>
-            <div class="result-desc">
-                <p id="detail-description">여행지 설명이 여기에 들어갑니다.</p>
-            </div>
-            
-            <div class="curation-box">
-                <h3>📍 꼭 가봐야 할 명소</h3>
-                <ul id="spot-list">
-                    <!-- 추천 명소가 여기에 추가됨 -->
-                </ul>
-            </div>
-
-            <div class="result-btns">
-                <button class="btn btn-primary" onclick="goHome()">다른 여행지 보기</button>
-                <button class="btn btn-secondary" onclick="shareResult()">여행 정보 공유하기</button>
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content container">
+                <h1>당신만의 특별한 한국 여행을 찾아보세요</h1>
+                <p>숨겨진 명소부터 유명한 관광지까지, 한국의 매력을 경험해보세요.</p>
+                <a href="#destinations" class="btn">여행지 둘러보기</a>
             </div>
         </section>
 
-        <!-- 제휴 및 문의 화면 -->
-        <section id="contact-screen">
-            <div class="header">
-                <span class="subtitle">CONTACT US</span>
-                <h1>여행 문의 및 제안</h1>
+        <section id="destinations" class="destinations container">
+            <div class="section-title">
+                <h2>추천 여행지</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">전체</button>
+                    <button class="filter-btn" data-filter="nature">자연</button>
+                    <button class="filter-btn" data-filter="city">도시</button>
+                    <button class="filter-btn" data-filter="history">역사</button>
+                </div>
             </div>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">성함</label>
-                    <input type="text" id="name" placeholder="성함을 입력해주세요">
+
+            <div class="destination-grid">
+                <!-- Jeju -->
+                <div class="dest-card" data-category="nature">
+                    <div class="card-img" style="background-color: #3498db;">
+                        <span>제주도</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>제주도</h3>
+                        <p>에메랄드빛 바다와 한라산의 절경이 어우러진 휴양의 섬.</p>
+                        <span class="tag">#자연 #휴양</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" id="email" placeholder="example@email.com">
+
+                <!-- Seoul -->
+                <div class="dest-card" data-category="city">
+                    <div class="card-img" style="background-color: #e67e22;">
+                        <span>서울</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>서울 (명동/강남)</h3>
+                        <p>전통과 현대가 공존하는 한국의 역동적인 수도.</p>
+                        <span class="tag">#도시 #쇼핑</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">문의 내용</label>
-                    <textarea id="message" rows="5" placeholder="궁금하신 점을 자유롭게 적어주세요"></textarea>
+
+                <!-- Gyeongju -->
+                <div class="dest-card" data-category="history">
+                    <div class="card-img" style="background-color: #9b59b6;">
+                        <span>경주</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>경주</h3>
+                        <p>천년의 역사가 숨 쉬는 노천 박물관.</p>
+                        <span class="tag">#역사 #전통</span>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="alert('문의가 접수되었습니다!')">문의 보내기</button>
-            </form>
-            <button class="btn btn-restart" onclick="hideContact()">돌아가기</button>
+
+                <!-- Busan -->
+                <div class="dest-card" data-category="city">
+                    <div class="card-img" style="background-color: #2ecc71;">
+                        <span>부산 (해운대)</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>부산</h3>
+                        <p>화려한 야경과 해변이 매력적인 해양 도시.</p>
+                        <span class="tag">#도시 #바다</span>
+                    </div>
+                </div>
+
+                <!-- Seorak -->
+                <div class="dest-card" data-category="nature">
+                    <div class="card-img" style="background-color: #1abc9c;">
+                        <span>설악산</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>설악산</h3>
+                        <p>사계절이 아름다운 한국의 대표 명산.</p>
+                        <span class="tag">#자연 #등산</span>
+                    </div>
+                </div>
+
+                <!-- Jeonju -->
+                <div class="dest-card" data-category="history">
+                    <div class="card-img" style="background-color: #f1c40f;">
+                        <span>전주</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>전주 (한옥마을)</h3>
+                        <p>한국의 전통 가옥과 맛있는 음식이 가득한 곳.</p>
+                        <span class="tag">#역사 #전주한옥마을</span>
+                    </div>
+                </div>
+            </div>
         </section>
-    </div>
+
+        <section id="newsletter" class="newsletter">
+            <div class="container">
+                <h3>여행 소식 받아보기</h3>
+                <p>새로운 여행지와 이벤트를 가장 먼저 알려드립니다.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="이메일 주소를 입력하세요">
+                    <button type="submit" class="btn">구독하기</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <p>&copy; 2026 K-Traveler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="main.js"></script>
 </body>
