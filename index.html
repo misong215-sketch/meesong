@@ -1,216 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6TL5KZ5J5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-G6TL5KZ5J5');
-    </script>
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "w3tdu9k32n");
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심리테스트 모음</title>
+    <title>국내 여행지 추천 가이드</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Teachable Machine Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <div class="app-container">
-        <!-- 홈 화면 (테스트 목록) -->
+        <!-- 홈 화면 (여행지 목록) -->
         <section id="home-screen" class="active">
             <div class="header">
-                <h1>심리테스트 홈</h1>
+                <span class="subtitle">KOREA TRAVEL GUIDE</span>
+                <h1>국내 여행지 추천</h1>
             </div>
-            <div class="test-list">
-                <div class="test-card ai-card" onclick="showAiTest()">
-                    <div class="test-icon">🐶</div>
-                    <div class="test-info">
-                        <h3>AI 강아지상 테스트</h3>
-                        <p>내 얼굴은 어떤 강아지를 닮았을까?</p>
-                    </div>
-                </div>
-                <div class="test-card" onclick="initTest('temperature')">
-                    <div class="test-icon">🤝</div>
-                    <div class="test-info">
-                        <h3>인간관계 온도 테스트</h3>
-                        <p>나의 사회적 온도는 몇 도일까?</p>
-                    </div>
-                </div>
-                <div class="test-card" onclick="initTest('pastLife')">
-                    <div class="test-icon">📜</div>
-                    <div class="test-info">
-                        <h3>전생 신분 테스트</h3>
-                        <p>조선시대 나의 신분은 무엇이었을까?</p>
-                    </div>
-                </div>
-                <div class="test-card" onclick="initTest('mbtiTemp')">
-                    <div class="test-icon">🧠</div>
-                    <div class="test-info">
-                        <h3>나의 성격 온도 MBTI 테스트</h3>
-                        <p>내 성격은 몇 도일까? MBTI 그룹별 온도 확인</p>
-                    </div>
-                </div>
-                <!-- 로또 번호 추첨 추가 -->
-                <div class="test-card lotto-card" onclick="showLotto()">
-                    <div class="test-icon">🎰</div>
-                    <div class="test-info">
-                        <h3>이번 주 행운의 로또 번호</h3>
-                        <p>인생 역전! 나의 행운 숫자를 확인해보세요</p>
-                    </div>
-                </div>
+            <div class="category-filter">
+                <button class="filter-btn active" onclick="filterDestinations('all')">전체</button>
+                <button class="filter-btn" onclick="filterDestinations('city')">도시</button>
+                <button class="filter-btn" onclick="filterDestinations('nature')">자연</button>
+                <button class="filter-btn" onclick="filterDestinations('history')">역사</button>
             </div>
-            <button class="btn btn-link" onclick="showContact()">🤝 제휴 문의하기</button>
+            <div class="test-list" id="destination-list">
+                <!-- 여행지 카드가 여기에 동적으로 생성됩니다 -->
+            </div>
+            <button class="btn btn-link" onclick="showContact()">✈️ 여행 문의하기</button>
         </section>
 
-        <!-- AI 강아지상 테스트 화면 -->
-        <section id="ai-test-screen">
+        <!-- 여행지 상세 화면 -->
+        <section id="detail-screen">
             <div class="header">
-                <span class="subtitle">AI FACE ANALYSIS</span>
-                <h1>강아지상 테스트</h1>
+                <span id="detail-category" class="subtitle">카테고리</span>
+                <h1 id="detail-title">여행지 이름</h1>
             </div>
-            <div class="upload-container">
-                <div id="image-preview" class="image-preview">
-                    <p>사진을 업로드해주세요</p>
-                </div>
-                <input type="file" id="image-input" accept="image/*" onchange="previewImage(event)" style="display: none;">
-                <button class="btn btn-primary" onclick="document.getElementById('image-input').click()">📸 사진 선택하기</button>
-                <button id="analyze-btn" class="btn btn-secondary" onclick="predict()" style="display: none; margin-top: 10px;">분석 시작하기</button>
+            <div class="result-image-container">
+                <img id="detail-image" src="" alt="여행지 이미지">
             </div>
-            <div id="loading" class="loading" style="display: none;">
-                <div class="spinner"></div>
-                <p>AI가 관상을 분석 중입니다...</p>
-            </div>
-            <button class="btn btn-restart" onclick="goHome()">홈으로 돌아가기</button>
-        </section>
-
-        <!-- 로또 추첨 화면 -->
-        <section id="lotto-screen">
-            <div class="header">
-                <span class="subtitle">LUCKY NUMBER</span>
-                <h1>행운의 로또 추첨</h1>
-            </div>
-            <div class="lotto-container">
-                <div id="lotto-balls" class="lotto-balls">
-                    <div class="ball-placeholder">?</div>
-                    <div class="ball-placeholder">?</div>
-                    <div class="ball-placeholder">?</div>
-                    <div class="ball-placeholder">?</div>
-                    <div class="ball-placeholder">?</div>
-                    <div class="ball-placeholder">?</div>
-                </div>
-                <button class="btn btn-primary" onclick="generateLotto()">번호 추첨하기</button>
-            </div>
-            <div class="revisit-box">
-                <p>✨ 이번 주 당첨의 주인공은 당신입니다! ✨</p>
-                <p class="small">매주 새로운 기운으로 번호를 추첨해드려요.<br><strong>즐겨찾기(Ctrl+D)</strong> 해두고 매주 토요일 전에 방문해보세요!</p>
-            </div>
-            <button class="btn btn-restart" onclick="goHome()">홈으로 돌아가기</button>
-        </section>
-
-        <!-- 시작 화면 (공통) -->
-        <section id="start-screen">
-            <div class="header">
-                <span id="start-subtitle" class="subtitle">부제목</span>
-                <h1 id="start-title">테스트 제목</h1>
-            </div>
-            <div class="main-image">
-                <div id="start-icon" class="thermometer-icon">🌡️</div>
-            </div>
-            <p id="start-desc" class="description">
-                설명 문구
-            </p>
-            <button class="btn btn-primary" onclick="startTest()">테스트 시작하기</button>
-            <button class="btn btn-restart" onclick="goHome()">홈으로 돌아가기</button>
-        </section>
-
-        <!-- 테스트 진행 화면 -->
-        <section id="test-screen">
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div id="progress" class="progress"></div>
-                </div>
-                <span id="page-count" class="page-count">1/5</span>
-            </div>
-            <div class="question-box">
-                <h2 id="question-text">질문이 여기에 표시됩니다.</h2>
-                <div class="answer-btns">
-                    <button id="btnA" class="btn btn-answer" onclick="nextQuestion('A')">A 답변</button>
-                    <button id="btnB" class="btn btn-answer" onclick="nextQuestion('B')">B 답변</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 결과 화면 -->
-        <section id="result-screen">
-            <span class="subtitle">테스트 결과</span>
-            <h1 id="result-title">유형 이름</h1>
-            <div id="result-badge" class="result-badge">🔥</div>
             <div class="result-desc">
-                <p id="result-summary">성격 특징 요약이 여기에 들어갑니다.</p>
+                <p id="detail-description">여행지 설명이 여기에 들어갑니다.</p>
             </div>
             
             <div class="curation-box">
-                <h3>💡 당신을 위한 추천 큐레이션</h3>
-                <ul id="curation-list">
-                    <!-- 큐레이션 아이템이 여기에 추가됨 -->
+                <h3>📍 꼭 가봐야 할 명소</h3>
+                <ul id="spot-list">
+                    <!-- 추천 명소가 여기에 추가됨 -->
                 </ul>
             </div>
 
             <div class="result-btns">
-                <button class="btn btn-secondary" onclick="shareResult()">결과 공유하기</button>
-                <button class="btn btn-restart" onclick="goHome()">다른 테스트 하러가기</button>
-                <button class="btn btn-link" onclick="showContact()">🤝 제휴 문의하기</button>
-            </div>
-
-            <!-- Disqus 댓글 섹션 -->
-            <div class="comments-section">
-                <div id="disqus_thread"></div>
-                <script>
-                    (function() {
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://meesong.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                    })();
-                </script>
+                <button class="btn btn-primary" onclick="goHome()">다른 여행지 보기</button>
+                <button class="btn btn-secondary" onclick="shareResult()">여행 정보 공유하기</button>
             </div>
         </section>
 
-        <!-- 제휴 문의 화면 -->
+        <!-- 제휴 및 문의 화면 -->
         <section id="contact-screen">
             <div class="header">
-                <span class="subtitle">PARTNERSHIP</span>
-                <h1>제휴 문의</h1>
+                <span class="subtitle">CONTACT US</span>
+                <h1>여행 문의 및 제안</h1>
             </div>
-            <form action="https://formspree.io/f/xqegzbeg" method="POST" class="contact-form">
+            <form class="contact-form">
                 <div class="form-group">
-                    <label for="name">성함 / 업체명</label>
-                    <input type="text" id="name" name="name" placeholder="성함 또는 업체명을 입력해주세요" required>
+                    <label for="name">성함</label>
+                    <input type="text" id="name" placeholder="성함을 입력해주세요">
                 </div>
                 <div class="form-group">
-                    <label for="email">회신 받을 이메일</label>
-                    <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" placeholder="example@email.com">
                 </div>
                 <div class="form-group">
                     <label for="message">문의 내용</label>
-                    <textarea id="message" name="message" rows="5" placeholder="제휴 제안 또는 문의 내용을 자유롭게 적어주세요" required></textarea>
+                    <textarea id="message" rows="5" placeholder="궁금하신 점을 자유롭게 적어주세요"></textarea>
                 </div>
-                <input type="hidden" name="_subject" value="메송 테스트 제휴 문의">
-                <button type="submit" class="btn btn-primary">문의 보내기</button>
+                <button type="button" class="btn btn-primary" onclick="alert('문의가 접수되었습니다!')">문의 보내기</button>
             </form>
             <button class="btn btn-restart" onclick="hideContact()">돌아가기</button>
         </section>
