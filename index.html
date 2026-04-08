@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./favicon.ico" />
+    
+    <!-- Performance: Preconnect to external domains if any (e.g., fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicon - Multiple formats for better compatibility -->
+    <link rel="icon" type="image/x-icon" href="/meesong/favicon.ico" />
+    <link rel="shortcut icon" href="/meesong/favicon.ico" />
     
     <!-- SEO Meta Tags -->
     <title>FitColor - 퍼스널 핏 & 다이어트 루틴 진단</title>
@@ -27,8 +34,8 @@
     <meta property="twitter:description" content="나만의 라이프스타일에 딱 맞는 퍼스널 핏과 다이어트 루틴을 진단해 보세요. AI 팩폭 트레이너와 함께하는 1달 챌린지로 건강한 변화를 시작하세요." />
     <meta property="twitter:image" content="https://misong215-sketch.github.io/meesong/favicon.ico" />
 
-    <!-- Naver Search Advisor Verification (Optional, but good for Naver SEO) -->
-    <!-- <meta name="naver-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="google9a5edd618d6d33db" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -56,5 +63,6 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Vite's default module script is already non-blocking (defer) -->
   </body>
 </html>
