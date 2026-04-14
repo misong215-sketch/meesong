@@ -8,148 +8,261 @@ interface Question {
 }
 
 interface Persona {
+  id: number;
+  name: string;
+  animal: string;
+  emoji: string;
   color: string;
-  hex: string;
   title: string;
+  factBomb: string[];
   description: string;
-  exercise: string;
-  diet: string;
-}
-
-interface LogEntry {
-  type: 'food' | 'exercise' | 'trainer';
-  text: string;
-  timestamp: Date;
 }
 
 const QUESTIONS: Question[] = [
   {
     id: 1,
-    text: "평소 하루 활동량은 어느 정도인가요?",
+    text: "주말에 갑자기 친구가 나오라고 한다면?",
     options: [
-      { label: "거의 움직이지 않아요 (사무직 등)", score: 1 },
-      { label: "가벼운 산책 정도는 해요", score: 2 },
-      { label: "매일 꾸준히 운동을 해요", score: 3 },
-      { label: "육체적인 활동이 매우 많아요", score: 4 },
+      { label: "오예! 바로 준비하고 나간다", score: 3 },
+      { label: "나쁘지 않군, 적당히 맞춰서 나간다", score: 2 },
+      { label: "이미 침대와 물아일체... 거절한다", score: 1 },
     ]
   },
   {
     id: 2,
-    text: "평소 식습관은 어떤가요?",
+    text: "새로운 프로젝트를 시작할 때 나는?",
     options: [
-      { label: "규칙적이고 건강하게 먹어요", score: 1 },
-      { label: "배달 음식이나 외식이 잦아요", score: 2 },
-      { label: "스트레스를 먹는 것으로 풀어요", score: 3 },
-      { label: "식사 시간이 매우 불규칙해요", score: 4 },
+      { label: "철저한 계획 없이는 시작도 안 한다", score: 1 },
+      { label: "큰 틀만 잡고 일단 부딪힌다", score: 2 },
+      { label: "발등에 불이 떨어져야 움직인다", score: 3 },
     ]
   },
   {
     id: 3,
-    text: "평균 수면 시간은 얼마나 되나요?",
+    text: "친구가 속상한 일을 털어놓을 때 나의 반응은?",
     options: [
-      { label: "8시간 이상 푹 자요", score: 1 },
-      { label: "6-7시간 정도 적당히 자요", score: 2 },
-      { label: "5시간 미만으로 늘 부족해요", score: 3 },
-      { label: "수면의 질이 매우 낮아요", score: 4 },
+      { label: "해결책을 찾아주느라 바쁘다", score: 1 },
+      { label: "말없이 들어주며 공감해 준다", score: 3 },
+      { label: "상대방의 논리적 오류를 찾는다", score: 2 },
     ]
   },
   {
     id: 4,
-    text: "현재 느끼는 스트레스 지수는?",
+    text: "모르는 사람들과 함께 있는 자리에서 나는?",
     options: [
-      { label: "거의 없어요, 평온해요", score: 1 },
-      { label: "가끔 받지만 관리 가능해요", score: 2 },
-      { label: "꽤 높아서 피로감을 느껴요", score: 3 },
-      { label: "매우 높아서 일상이 힘들어요", score: 4 },
+      { label: "먼저 말을 걸며 분위기를 주도한다", score: 3 },
+      { label: "누가 말 걸어줄 때까지 기다린다", score: 2 },
+      { label: "투명인간이 되고 싶어 구석에 박힌다", score: 1 },
+    ]
+  },
+  {
+    id: 5,
+    text: "내가 생각하는 나의 모습은?",
+    options: [
+      { label: "현실적이고 실용적인 사람", score: 1 },
+      { label: "상상력이 풍부하고 감성적인 사람", score: 3 },
+      { label: "그냥 아무 생각이 없는 사람", score: 2 },
+    ]
+  },
+  {
+    id: 6,
+    text: "방 정리 정돈 상태는 어떤가요?",
+    options: [
+      { label: "모든 물건이 제자리에 있어야 한다", score: 1 },
+      { label: "적당히 살 만하면 된다", score: 2 },
+      { label: "발 디딜 틈만 있으면 된다", score: 3 },
     ]
   }
 ];
 
-const PERSONAS: Record<number, Persona> = {
-  1: {
-    color: "에너제틱 오렌지",
-    hex: "#ff7e5f",
-    title: "활동적인 에너지 메이커!",
-    description: "높은 활동량을 가진 당신은 더 효율적인 회복과 폭발적인 에너지가 필요합니다.",
-    exercise: "고강도 인터벌 트레이닝(HIIT) & 러닝",
-    diet: "고단백 식단 + 충분한 수분 섭취"
+const PERSONAS: Persona[] = [
+  {
+    id: 1,
+    name: "귀차니즘 만렙 판다",
+    animal: "Panda",
+    emoji: "🐼",
+    color: "#F5F5F5",
+    title: "숨 쉬는 것도 가끔 귀찮음",
+    factBomb: [
+      "누워있는 게 인생의 목표임",
+      "말투에서 영혼이 이미 가출함",
+      "해야 할 일? 내일의 내가 하겠지",
+      "연락 안 됨. 답장 기다리다 사리 나옴"
+    ],
+    description: "당신은 세상에서 가장 평화로운 존재지만, 가끔은 너무 평화로워서 정지 화면인 줄 알았어요."
   },
-  2: {
-    color: "캄 블루",
-    hex: "#4facfe",
-    title: "차분하고 꾸준한 페이스 메이커!",
-    description: "정적인 라이프스타일의 당신에게는 유연함과 부드러운 순환이 필요합니다.",
-    exercise: "요가 & 필라테스 & 가벼운 산책",
-    diet: "지중해식 식단 (신선한 채소와 올리브유)"
+  {
+    id: 2,
+    name: "계획 집착러 다람쥐",
+    animal: "Squirrel",
+    emoji: "🐿️",
+    color: "#FFF3E0",
+    title: "1분 단위로 인생 설계 중",
+    factBomb: [
+      "계획 틀어지면 동공 지진 남",
+      "메모장에 집착함. 메모의 메모를 함",
+      "남의 비효율적인 행동 보면 화남",
+      "본인만 아는 규칙이 너무 많음"
+    ],
+    description: "준비성이 철저한 건 좋지만, 가끔은 도토리 숨긴 곳을 까먹는 다람쥐처럼 여유를 가져보세요."
   },
-  3: {
-    color: "밸런스 그린",
-    hex: "#43e97b",
-    title: "균형 잡힌 라이프 밸런서!",
-    description: "적당한 활동과 휴식을 즐기는 당신, 현재의 균형을 유지하는 것이 핵심입니다.",
-    exercise: "주 3회 웨이트 트레이닝 & 배드민턴",
-    diet: "탄수화물, 단백질, 지방의 황금 비율 식단"
+  {
+    id: 3,
+    name: "유리멘탈 고양이",
+    animal: "Cat",
+    emoji: "🐱",
+    color: "#FCE4EC",
+    title: "파워 예민! 건드리면 하악질",
+    factBomb: [
+      "혼자 있고 싶은데 외로운 건 싫음",
+      "말 한마디에 밤새 이불킥 함",
+      "낯가림 만렙. 친해지기 난이도 극악",
+      "기분파라서 주변 사람들 눈치 보게 함"
+    ],
+    description: "까칠해 보이지만 사실은 사랑받고 싶은 츤데레! 마음의 벽을 조금만 낮춰봐요."
   },
-  4: {
-    color: "리질리언트 레드",
-    hex: "#f093fb",
-    title: "회복이 필요한 열정가!",
-    description: "스트레스가 높고 휴식이 부족한 당신, 가장 먼저 필요한 것은 몸의 회복입니다.",
-    exercise: "스트레칭 & 명상 & 수영",
-    diet: "항산화 식품 (베리류, 견과류) 중심의 식단"
+  {
+    id: 4,
+    name: "무한긍정 댕댕이",
+    animal: "Dog",
+    emoji: "🐶",
+    color: "#FFFDE7",
+    title: "세상은 아름다워! 꼬리 붕붕",
+    factBomb: [
+      "사람을 너무 좋아해서 사기당하기 딱 좋음",
+      "생각이라는 걸 가끔 안 함",
+      "분위기 파악 못 하고 혼자 신남",
+      "거절 못 해서 온갖 일 다 떠맡음"
+    ],
+    description: "당신의 에너지는 주변을 밝게 하지만, 가끔은 멈춰 서서 현실을 직시할 필요가 있어요."
+  },
+  {
+    id: 5,
+    name: "팩트 살인마 여우",
+    animal: "Fox",
+    emoji: "🦊",
+    color: "#FFEBEE",
+    title: "논리로 다 패고 다님",
+    factBomb: [
+      "공감 능력 지능 문제라고 생각함",
+      "맞는 말만 하는데 기분은 나쁨",
+      "효율성 따지느라 인간미 실종됨",
+      "지기 싫어서 끝까지 말꼬리 잡음"
+    ],
+    description: "똑똑한 건 인정! 하지만 가끔은 정답보다 따뜻한 위로 한마디가 더 중요할 때도 있답니다."
+  },
+  {
+    id: 6,
+    name: "소심한 관종 햄스터",
+    animal: "Hamster",
+    emoji: "🐹",
+    color: "#FCE4EC",
+    title: "구석이 좋은데 주목받고 싶어",
+    factBomb: [
+      "먼저 말 못 거는데 관심은 받고 싶음",
+      "온라인에서는 핵인싸, 오프라인은 쭈구리",
+      "댓글 하나하나에 일희일비함",
+      "칭찬해주면 하루 종일 그 생각만 함"
+    ],
+    description: "해바라기씨처럼 소중한 당신의 매력을 조금 더 당당하게 보여줘도 괜찮아요!"
+  },
+  {
+    id: 7,
+    name: "마이웨이 호랑이",
+    animal: "Tiger",
+    emoji: "🐯",
+    color: "#FFF3E0",
+    title: "다 비켜! 내 갈 길 간다",
+    factBomb: [
+      "남의 조언? 응 안 들어",
+      "고집이 황소고집 수준임",
+      "본인 빼고 다 답답해함",
+      "하고 싶은 건 무조건 해야 직성 풀림"
+    ],
+    description: "리더십은 멋지지만, 주변 사람들의 목소리에도 귀를 기울여야 진정한 왕이 될 수 있어요."
+  },
+  {
+    id: 8,
+    name: "걱정 인형 토끼",
+    animal: "Rabbit",
+    emoji: "🐰",
+    color: "#E1F5FE",
+    title: "세상 걱정 혼자 다 함",
+    factBomb: [
+      "일어나지도 않은 일로 소설 씀",
+      "결정 장애 심각함. 메뉴 하나 못 고름",
+      "남 눈치 보느라 본인 실속 못 챙김",
+      "작은 일에도 깜짝깜짝 놀람"
+    ],
+    description: "걱정은 나누면 반이 된다지만, 당신은 나누기엔 너무 많은 걱정을 쌓아두고 있네요."
+  },
+  {
+    id: 9,
+    name: "게으른 완벽주의 나무늘보",
+    animal: "Sloth",
+    emoji: "🦥",
+    color: "#EFEBE9",
+    title: "시작은 창대하나 끝은 침대",
+    factBomb: [
+      "계획은 우주 정복급인데 실천은 0",
+      "완벽하게 안 할 거면 아예 안 함",
+      "누구보다 빠르게 남들과는 다르게 눕고 싶음",
+      "마감 직전에 초인적인 힘 발휘함"
+    ],
+    description: "생각만 하다가 기회를 놓치지 마세요. 가끔은 완벽보다 시작이 더 중요하니까요."
+  },
+  {
+    id: 10,
+    name: "친절한 오지랖 코끼리",
+    animal: "Elephant",
+    emoji: "🐘",
+    color: "#ECEFF1",
+    title: "우리 모두 친구야! (피곤)",
+    factBomb: [
+      "남의 일 해결해주느라 내 일 못 함",
+      "거절하면 큰일 나는 줄 암",
+      "모든 사람한테 다 맞춰줌",
+      "혼자 상처받고 겉으로는 웃음"
+    ],
+    description: "착한 사람 증후군에서 벗어나세요. 당신의 마음을 먼저 챙기는 것이 가장 중요합니다."
+  },
+  {
+    id: 11,
+    name: "상상력 과부하 고래",
+    animal: "Whale",
+    emoji: "🐳",
+    color: "#E3F2FD",
+    title: "꿈속에서 사는 중",
+    factBomb: [
+      "현실 파악 안 됨. 몽상가 기질 다분",
+      "특이하다는 말 은근 즐김",
+      "말투가 4차원적임",
+      "감수성 폭발해서 혼자 눈물 훔침"
+    ],
+    description: "넓은 바다를 헤엄치는 고래처럼 자유로운 영혼! 하지만 현실의 땅도 밟아보세요."
+  },
+  {
+    id: 12,
+    name: "열정 만수르 사자",
+    animal: "Lion",
+    emoji: "🦁",
+    color: "#FFF3E0",
+    title: "오늘을 불태우자! 화르르",
+    factBomb: [
+      "남들 피곤하게 만드는 스타일",
+      "가만히 있는 꼴을 못 봄",
+      "모든 걸 경쟁으로 받아들임",
+      "본인 열정 강요해서 주변 사람 탈진함"
+    ],
+    description: "열정은 좋지만 가끔은 불을 끄고 휴식하세요. 엔진도 쉬어야 오래 달리는 법입니다."
   }
-};
-
-const CHEAT_KEYWORDS = ['피자', '치킨', '햄버거', '떡볶이', '마라탕', '술', '야식', '디저트', '케이크', '도넛', '콜라', '라면', '튀김', '삼겹살'];
-const EXERCISE_KEYWORDS = ['달리기', '러닝', '조깅', '스쿼트', '팔굽혀펴기', '수영', '요가', '필라테스', '헬스', '걷기', '등산', '배드민턴', '줄넘기', '홈트', '운동완료'];
-
-const FACT_BOMBS = [
-  "지금 그게 입으로 들어가요? 당신의 복근이 오열하고 있어요! 😭",
-  "피자 한 조각에 런닝머신 30분... 감당할 수 있겠어요? 🍕🔥",
-  "오늘만 날이 아니에요. 내일의 당신이 오늘의 당신을 원망할 겁니다! 😤",
-  "다이어트는 내일부터? 그럼 내일의 몸매도 내일부터 시작되겠네요? 🙃",
-  "그 칼로리, 지금 당장 나가서 다 태우고 올 자신 있죠? 🏃‍♂️🏃‍♀️",
-  "거울 속의 당신과 눈을 마주치고 다시 말해봐요. 그게 진짜 배고픈 건지! 🤨",
-  "지방들이 지금 자기들끼리 파티 중이래요. 축하드려요, 파티 장소는 당신의 뱃살입니다! 🎉",
-  "맛있게 먹으면 0칼로리? 그건 누가 만든 헛소문일까요? 제 눈엔 지방만 보이는데요? 🧐",
-  "입은 즐겁지만 배꼽은 울고 있습니다. 정신 차리세요! 뱃살이 '어서 와'라고 인사하잖아요. 🌊",
-  "지금 먹은 그 한 입, 버피 테스트 100개로 갚으실 거죠? 제가 다 지켜보고 있습니다. 😈",
-  "칼로리는 거짓말을 하지 않아요. 당신의 몸이 정직하게 증명할 겁니다. 무섭지 않나요? 📉",
-  "그거 한 입 먹는다고 행복해지나요? 거울 보는 게 더 행복할 텐데... 선택은 당신의 몫! 🤳"
-];
-
-const PRAISES = [
-  "세상에! 올림픽 나가는 줄 알았잖아요! 당신의 열정에 치어스... ⭐",
-  "오늘 운동량 실화인가요? 근육들이 지금 축제를 벌이고 있어요! 💃🕺",
-  "완벽합니다! 이 기세라면 한 달 뒤엔 완전 딴사람이 되어 있겠는데요? 🏆",
-  "와... 진짜 독종이시네요! (칭찬입니다) 당신의 끈기에 경의를 표합니다! 👏",
-  "지구력이 대단해요! 오늘 당신이 흘린 땀은 배신하지 않을 거예요! 💦✨",
-  "와우! 갓벽 그 자체! 오늘 하루는 당신이 승리자입니다! 🥇",
-  "지구가 흔들렸어요! 당신의 스쿼트 때문에요! 진정한 대지의 신이신가요? 🌍💪",
-  "와... 이 정도면 넷플릭스 '피지컬:100' 다음 시즌 나가셔야겠는데요? 섭외 들어오겠어요! 📺🔥",
-  "근육들이 당신을 찬양하고 있습니다. 진정한 '근수저'의 탄생인가요? 경이롭습니다! 🛐",
-  "땀방울 하나하나가 다이아몬드보다 빛납니다. 당신은 움직이는 보석이에요! 💎✨",
-  "지치지 않는 에너자이저! 당신의 열정에 제 배터리까지 완충되었습니다! 🔋⚡",
-  "오늘의 고통은 내일의 복근이 됩니다. 당신은 이미 자신과의 싸움에서 이겼어요! 🤺👑"
 ];
 
 function App() {
-  const [mode, setMode] = useState<'diagnosis' | 'trainer'>('diagnosis');
   const [step, setStep] = useState<'landing' | 'quiz' | 'result'>('landing');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
-
-  // Trainer States
-  const [logs, setLogs] = useState<LogEntry[]>([]);
-  const [userInput, setUserInput] = useState('');
-  const [challengeDay, setChallengeDay] = useState(1);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [logs]);
+  const [result, setResult] = useState<Persona | null>(null);
 
   const startQuiz = () => {
     setStep('quiz');
@@ -164,205 +277,87 @@ function App() {
     if (currentQuestion < QUESTIONS.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      // 6-18 point range mapped to 0-11 index
+      const finalScore = nextScore;
+      let index = Math.floor(((finalScore - 6) / 13) * 12);
+      if (index < 0) index = 0;
+      if (index > 11) index = 11;
+      
+      setResult(PERSONAS[index]);
       setStep('result');
     }
   };
 
-  const getResultPersona = () => {
-    const avgScore = totalScore / QUESTIONS.length;
-    if (avgScore <= 1.5) return PERSONAS[2];
-    if (avgScore <= 2.5) return PERSONAS[3];
-    if (avgScore <= 3.5) return PERSONAS[1];
-    return PERSONAS[4];
-  };
-
-  const persona = getResultPersona();
-
-  // Trainer Methods
-  const handleLogSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!userInput.trim()) return;
-
-    const isExercise = EXERCISE_KEYWORDS.some(kw => userInput.includes(kw));
-    const isCheat = CHEAT_KEYWORDS.some(kw => userInput.includes(kw));
-    
-    const newLogs: LogEntry[] = [
-      ...logs,
-      { type: isExercise ? 'exercise' : 'food', text: userInput, timestamp: new Date() }
-    ];
-
-    let trainerMsg = "";
-    if (isExercise) {
-      trainerMsg = PRAISES[Math.floor(Math.random() * PRAISES.length)];
-    } else if (isCheat) {
-      trainerMsg = FACT_BOMBS[Math.floor(Math.random() * FACT_BOMBS.length)];
-    } else {
-      trainerMsg = "기록 완료! 내일도 꾸준히 해봐요. 지켜보고 있습니다... 👀";
-    }
-
-    newLogs.push({ type: 'trainer', text: trainerMsg, timestamp: new Date() });
-    
-    setLogs(newLogs);
-    setUserInput('');
-    if (isExercise) setChallengeDay(prev => Math.min(prev + 1, 30));
-  };
-
   return (
     <div className="app">
-      <nav className="mode-nav">
-        <button 
-          className={mode === 'diagnosis' ? 'active' : ''} 
-          onClick={() => setMode('diagnosis')}
-        >
-          루틴 진단
-        </button>
-        <button 
-          className={mode === 'trainer' ? 'active' : ''} 
-          onClick={() => {
-            setMode('trainer');
-            if (logs.length === 0) {
-              setLogs([{ type: 'trainer', text: "반가워요! 당신의 '팩폭' 트레이너입니다. 오늘 뭐 먹었는지, 운동은 했는지 솔직하게 불어봐요! 😏", timestamp: new Date() }]);
-            }
-          }}
-        >
-          AI 트레이너
-        </button>
-      </nav>
-
-      <main className={mode === 'diagnosis' ? 'mode-content' : 'trainer-view'}>
-        {mode === 'diagnosis' ? (
-          <>
-            {step === 'landing' && (
-              <div className="landing-view">
-                <div className="hero-content">
-                  <span className="badge">AI 맞춤형 진단</span>
-                  <h1>나만의 퍼스널 <br /><span>'핏(Fit) & 다이어트'</span> 루틴</h1>
-                  <p>단순한 수치를 넘어 당신의 라이프스타일을 진단합니다.</p>
-                  <button className="btn-start" onClick={startQuiz}>진단 시작하기 &rarr;</button>
-                </div>
-              </div>
-            )}
-
-            {step === 'quiz' && (
-              <div className="quiz-view">
-                <div className="progress-bar">
-                  <div 
-                    className="progress-fill" 
-                    style={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
-                  ></div>
-                </div>
-                <div className="question-container">
-                  <span className="q-number">Q{currentQuestion + 1}</span>
-                  <h2>{QUESTIONS[currentQuestion].text}</h2>
-                  <div className="options-grid">
-                    {QUESTIONS[currentQuestion].options.map((option, i) => (
-                      <button 
-                        key={i} 
-                        className="option-btn"
-                        onClick={() => handleAnswer(option.score)}
-                      >
-                        {option.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {step === 'result' && (
-              <div className="result-view" style={{ '--result-color': persona.hex } as any}>
-                <div className="result-card">
-                  <header className="result-header">
-                    <p>당신의 다이어트 컬러는</p>
-                    <h2 className="color-name">[{persona.color}]</h2>
-                    <h3>{persona.title}</h3>
-                  </header>
-                  
-                  <div className="result-content">
-                    <div className="desc-box">
-                      <p>{persona.description}</p>
-                    </div>
-
-                    <div className="recommendation">
-                      <div className="rec-item">
-                        <span className="icon">🏋️‍♂️</span>
-                        <div className="rec-text">
-                          <h4>추천 운동</h4>
-                          <p>{persona.exercise}</p>
-                        </div>
-                      </div>
-                      <div className="rec-item">
-                        <span className="icon">🥗</span>
-                        <div className="rec-text">
-                          <h4>추천 식단</h4>
-                          <p>{persona.diet}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="monthly-plan">
-                      <h4>한 달 루틴 가이드</h4>
-                      <ul>
-                        <li>1-2주차: 체력 증진 및 식단 적응기</li>
-                        <li>3-4주차: 고강도 루틴 및 습관 안착기</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <button className="btn-retry" onClick={() => setStep('landing')}>다시 테스트하기</button>
-                </div>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="trainer-container">
-            <header className="trainer-header">
-              <div className="challenge-status">
-                <span className="label">1달 챌린지</span>
-                <div className="day-count">DAY {challengeDay} / 30</div>
-                <div className="challenge-progress">
-                  <div className="progress-fill" style={{ width: `${(challengeDay / 30) * 100}%` }}></div>
-                </div>
-              </div>
-              <div className="trainer-profile">
-                <div className="avatar">🕶️</div>
-                <div className="info">
-                  <h3>팩폭 트레이너</h3>
-                  <span className="status">온라인 (지켜보는 중)</span>
-                </div>
-              </div>
-            </header>
-
-            <div className="chat-area" ref={scrollRef}>
-              {logs.map((log, i) => (
-                <div key={i} className={`message ${log.type}`}>
-                  <div className="msg-bubble">
-                    {log.type === 'trainer' && <span className="sender">Trainer</span>}
-                    <p>{log.text}</p>
-                    <span className="time">{log.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                  </div>
-                </div>
-              ))}
+      <main className="main-content">
+        {step === 'landing' && (
+          <div className="landing-view">
+            <div className="hero">
+              <span className="main-emoji">✨</span>
+              <h1>귀염뽀짝 <br/><span>팩폭 MBTI</span></h1>
+              <p>아기자기한데 뼈는 때리는 <br/>나의 진짜 성격 진단</p>
+              <button className="btn-start" onClick={startQuiz}>나의 정체성 확인하기 &rarr;</button>
             </div>
+          </div>
+        )}
 
-            <form className="input-area" onSubmit={handleLogSubmit}>
-              <input 
-                type="text" 
-                placeholder="오늘 뭐 먹었나요? 혹은 어떤 운동을 했나요?" 
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
-              />
-              <button type="submit" className="btn-send">기록</button>
-            </form>
+        {step === 'quiz' && (
+          <div className="quiz-view">
+            <div className="progress-container">
+              <div 
+                className="progress-bar" 
+                style={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
+              ></div>
+            </div>
+            <div className="question-container">
+              <span className="q-number">Q{currentQuestion + 1}</span>
+              <h2>{QUESTIONS[currentQuestion].text}</h2>
+              <div className="options-grid">
+                {QUESTIONS[currentQuestion].options.map((option, i) => (
+                  <button 
+                    key={i} 
+                    className="option-btn"
+                    onClick={() => handleAnswer(option.score)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
-            <div className="quick-guide">
-              <p>팁: '피자', '치킨'을 입력하면 팩폭이, '달리기', '운동완료'를 입력하면 칭찬이 쏟아집니다!</p>
+        {step === 'result' && result && (
+          <div className="result-view" style={{ '--result-color': result.color } as any}>
+            <div className="result-card">
+              <header className="result-header">
+                <span className="result-emoji">{result.emoji}</span>
+                <p className="type-title">{result.title}</p>
+                <h2 className="type-name">{result.name}</h2>
+              </header>
+
+              <div className="result-content">
+                <div className="fact-bomb-box">
+                  <h3>🚫 팩트 폭격 주의</h3>
+                  <ul>
+                    {result.factBomb.map((fact, i) => (
+                      <li key={i}>{fact}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="desc-box">
+                  <p>{result.description}</p>
+                </div>
+              </div>
+
+              <button className="btn-retry" onClick={() => setStep('landing')}>다시 테스트하기</button>
             </div>
           </div>
         )}
       </main>
 
-      {/* AddToAny BEGIN */}
       <div className="a2a_kit a2a_kit_size_32 a2a_default_style share-buttons">
         <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
         <a className="a2a_button_facebook"></a>
@@ -373,7 +368,6 @@ function App() {
         <a className="a2a_button_kakao"></a>
         <a className="a2a_button_twitter"></a>
       </div>
-      {/* AddToAny END */}
     </div>
   )
 }
