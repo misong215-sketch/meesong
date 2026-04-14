@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/misong215-sketch/meesong/issues"
   },
-  "homepage": "https://github.com/misong215-sketch/meesong#readme",
+  "homepage": "https://misong215-sketch.github.io/meesong",
   "description": "",
   "devDependencies": {
     "@types/react": "^19.2.14",
