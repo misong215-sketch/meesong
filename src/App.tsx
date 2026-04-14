@@ -115,7 +115,7 @@ const PERSONAS: Persona[] = [
       "은근히 뒤끝 있음", "친해지면 수다쟁이", "상처 잘 받는 편", "눈치 백단 만렙",
       "취향 확고한 타입", "먼저 연락 안 함", "선 넘으면 칼차단"
     ],
-    description: "까칠해 보여도 사실은 누구보다 속이 깊고 따뜻한 사람이에요."
+    description: "까칠해 보이지만 사실은 누구보다 속이 깊고 따뜻한 사람이에요."
   },
   {
     id: 4,
@@ -224,7 +224,7 @@ const PERSONAS: Persona[] = [
     factBombs: [
       "상상력의 끝판왕", "자유로운 영혼", "예술적 감각 있음", "현실 파악 좀 늦음",
       "혼자만의 세계 뚜렷", "특이하다는 말 즐김", "낭만적인 몽상가", "감정선이 섬세함",
-      "뜬구름 잡기 장인", "깊이 있는 생각", "이상적인 삶 추구", "말투가 감성적",
+      "뜬구름 잡기 선수", "깊이 있는 생각", "이상적인 삶 추구", "말투가 감성적",
       "4차원 매력 뿜뿜", "직관을 믿는 편", "바다 같은 포용력"
     ],
     description: "남들이 보지 못하는 세상을 꿈꾸는 당신! 창의적인 영감을 주는 사람이에요."
@@ -323,9 +323,9 @@ function App() {
           <div className="landing-view">
             <div className="hero">
               <div className="main-character-float">✨</div>
-              <h1>뼈 때리는 <br/><span>동물 팩폭 MBTI</span></h1>
-              <p>아기자기하게 생겨서 <br/>할 말은 다 하는 성격 진단</p>
-              <button className="btn-start" onClick={startQuiz}>나의 팩트 체크하러 가기 &rarr;</button>
+              <h1>내 안의 숨은 <br/><span>동물 캐릭터 찾기</span></h1>
+              <p>아기자기한 동물 친구가 알려주는 <br/>나의 진짜 성격 특징 테스트</p>
+              <button className="btn-start" onClick={startQuiz}>테스트 시작하기 &rarr;</button>
             </div>
           </div>
         )}
