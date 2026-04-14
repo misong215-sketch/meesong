@@ -13,7 +13,7 @@ interface Persona {
   emoji: string;
   color: string;
   subColor: string;
-  traits: string[];
+  factBombs: string[]; // 말풍선에 들어갈 팩폭 문구들
   description: string;
 }
 
@@ -77,21 +77,21 @@ const QUESTIONS: Question[] = [
 const PERSONAS: Persona[] = [
   {
     id: 1,
-    name: "귀차니즘 만렙 판다",
+    name: "침대 귀신 판다",
     emoji: "🐼",
     color: "#F5F5F5",
     subColor: "#E0E0E0",
-    traits: ["귀차니즘 심함", "침대와 물아일체", "연락 매우 느림", "평화주의자"],
-    description: "숨 쉬는 것도 가끔은 귀찮아하는 당신! 하지만 누구보다 평화롭고 느긋한 마음씨를 가졌네요."
+    factBombs: ["숨 쉬는 것도 귀찮지?", "카톡 답장 좀 해라", "누워있는 게 적성", "영혼 가출 1위"],
+    description: "게으름의 끝판왕! 미루기 장인이라 내일의 내가 고생 중이에요."
   },
   {
     id: 2,
-    name: "계획 집착러 다람쥐",
+    name: "계획 강박 다람쥐",
     emoji: "🐿️",
     color: "#FFF3E0",
     subColor: "#FFE0B2",
-    traits: ["계획에 진심임", "메모광", "시간 엄수 철저", "알고보면 완벽주의"],
-    description: "준비성이 철저한 당신! 가끔은 도토리를 숨긴 곳을 까먹는 다람쥐처럼 여유를 가져보는 건 어떨까요?"
+    factBombs: ["계획 없으면 불안함", "비효율적인 꼴 못 봄", "메모의 메모를 함", "피곤한 완벽주의"],
+    description: "1분 단위로 인생 설계하느라 머리에 쥐나겠어요. 도토리나 까먹으면서 쉬세요!"
   },
   {
     id: 3,
@@ -99,17 +99,17 @@ const PERSONAS: Persona[] = [
     emoji: "🐱",
     color: "#FCE4EC",
     subColor: "#F8BBD0",
-    traits: ["눈치 매우 빠름", "알고보면 따뜻함", "혼자있기 장인", "파워 예민"],
-    description: "까칠해 보이지만 사실은 속정이 깊은 당신! 마음의 벽을 조금만 낮추면 더 행복해질 거예요."
+    factBombs: ["말 한마디에 이불킥", "파워 예민 보스", "혼자 있고 싶어(뻥임)", "기분파 끝판왕"],
+    description: "까칠한 척하지만 사실은 관심 받고 싶은 츤데레! 유리멘탈 관리 좀 하세요."
   },
   {
     id: 4,
-    name: "무한긍정 댕댕이",
+    name: "텅 빈 긍정 댕댕이",
     emoji: "🐶",
     color: "#FFFDE7",
     subColor: "#FFF9C4",
-    traits: ["친화력 만렙", "단순 명료함", "꼬리 헬리콥터", "무한 긍정"],
-    description: "세상 모든 게 즐거운 당신! 당신의 에너지는 주변 사람들을 항상 행복하게 만든답니다."
+    factBombs: ["생각 없이 웃음", "거절 못하는 바보", "사기 당하기 딱 좋음", "분위기 파악 실패"],
+    description: "세상은 아름답지만 당신 주머니는 털리고 있어요. 가끔은 의심 좀 하고 삽시다!"
   },
   {
     id: 5,
@@ -117,71 +117,98 @@ const PERSONAS: Persona[] = [
     emoji: "🦊",
     color: "#FFEBEE",
     subColor: "#FFCDD2",
-    traits: ["논리 끝판왕", "팩폭 장인", "효율 중시", "지능캐 여우"],
-    description: "정답만 말하는 당신! 가끔은 정답보다 따뜻한 위로 한마디가 더 큰 힘이 될 때가 있어요."
+    factBombs: ["맞는 말인데 기분 나쁨", "공감 능력 실종됨", "지기 싫어서 말꼬리", "인간미 0%"],
+    description: "똑똑한 건 알겠는데 주변에 친구 다 떨어지겠어요. 정답보다 위로가 필요할 때도 있답니다."
   },
   {
     id: 6,
-    name: "소심한 관종 햄스터",
+    name: "내적 관종 햄스터",
     emoji: "🐹",
     color: "#FCE4EC",
     subColor: "#F8BBD0",
-    traits: ["내적 댄스 중", "쭈구리 관종", "칭찬에 약함", "해바라기씨 사랑"],
-    description: "관심은 받고 싶지만 나서는 건 무서운 당신! 당신의 존재만으로도 충분히 빛나고 있어요."
+    factBombs: ["관심 받고 싶어 미침", "근데 나서긴 무서움", "댓글 하나에 울고 웃음", "쭈구리 관종"],
+    description: "해바라기씨 뒤에 숨어서 남들 쳐다만 보지 말고, 좀 당당하게 매력을 보여줘요!"
   },
   {
     id: 7,
-    name: "마이웨이 호랑이",
+    name: "황소 고집 호랑이",
     emoji: "🐯",
     color: "#FFF3E0",
     subColor: "#FFE0B2",
-    traits: ["고집 불통", "리더십 장인", "솔직함 주의", "내 갈 길 간다"],
-    description: "남들 눈치 안 보고 당당한 당신! 당신의 리더십은 멋지지만 주변 목소리도 조금만 들어주세요."
+    factBombs: ["남의 말 죽어도 안 들음", "내가 무조건 맞음", "답정너의 정석", "독불장군 1위"],
+    description: "리더십이 아니라 그냥 고집이에요. 주변 사람들 귀에 딱지 앉겠어요!"
   },
   {
     id: 8,
-    name: "걱정 인형 토끼",
+    name: "걱정 과부하 토끼",
     emoji: "🐰",
     color: "#E1F5FE",
     subColor: "#B3E5FC",
-    traits: ["생각이 너무 많음", "걱정 과부하", "결정 장애", "깜짝 잘 놀람"],
-    description: "일어나지도 않은 일로 고민하는 당신! 걱정의 90%는 실제로 일어나지 않는답니다. 힘내세요!"
+    factBombs: ["일어나지도 않은 일 걱정", "결정 장애 말기", "남 눈치 보느라 바쁨", "쫄보 중의 쫄보"],
+    description: "걱정만 하다가 인생 다 가겠어요! 깡총깡총 뛰어다닐 용기 좀 내보세요."
   },
   {
     id: 9,
-    name: "완벽주의 나무늘보",
+    name: "잠만보 나무늘보",
     emoji: "🦥",
     color: "#EFEBE9",
     subColor: "#D7CCC8",
-    traits: ["느릿느릿 완벽", "시작이 힘들군", "은근 고집셈", "프로 잠만보"],
-    description: "완벽을 추구하느라 시작이 늦는 당신! 가끔은 완벽보다 일단 해보는 것이 더 중요하답니다."
+    factBombs: ["시작하려면 1년 걸림", "완벽 추구하다 포기", "움직이는 게 신기함", "느려터짐 주의"],
+    description: "완벽하게 하려고 생각만 하다가 결국 아무것도 안 하죠? 그냥 좀 시작이라도 하세요!"
   },
   {
     id: 10,
-    name: "오지랖 코끼리",
+    name: "오지랖 대장 코끼리",
     emoji: "🐘",
     color: "#ECEFF1",
     subColor: "#CFD8DC",
-    traits: ["거절 못함", "친절함 과다", "공감 요정", "프로 고민상담러"],
-    description: "남 챙기느라 본인은 못 챙기는 당신! 오늘은 자신을 위해 선물을 하나 해보는 건 어떨까요?"
+    factBombs: ["남의 일에만 참견", "내 코가 석 자임", "거절 못해서 끙끙", "피곤한 참견러"],
+    description: "착한 사람 병 좀 고치세요. 남 챙기기 전에 본인 앞가림부터 하는 게 어때요?"
   },
   {
     id: 11,
-    name: "몽상가 고래",
+    name: "망상 폭발 고래",
     emoji: "🐳",
     color: "#E3F2FD",
     subColor: "#BBDEFB",
-    traits: ["상상력 폭발", "자유로운 영혼", "감성 끝판왕", "4차원 몽상가"],
-    description: "넓은 바다를 꿈꾸는 당신! 당신의 창의적인 생각은 세상을 더 아름답게 만들 수 있어요."
+    factBombs: ["꿈속에서 사는 중", "현실 파악 0점", "4차원을 넘어 8차원", "뜬구름 잡기 선수"],
+    description: "바다 속에서 혼자 상상하지 말고 땅 위로 좀 올라오세요. 현실은 실전이라구요!"
   },
   {
     id: 12,
-    name: "열정 만수르 사자",
+    name: "허세 작렬 사자",
     emoji: "🦁",
     color: "#FFF3E0",
     subColor: "#FFE0B2",
-    traits: ["열정 폭발", "승부욕 강함", "자기애 뿜뿜", "직진 불도저"],
-    description: "어디서든 주인공이 되어야 하는 당신! 당신의 열정은 멋지지만 가끔은 휴식도 필요해요."
+    factBombs: ["주인공 병 말기", "남 가르치려 듦", "근거 없는 자신감", "관심 안 주면 삐짐"],
+    description: "자신감은 좋은데 가끔은 좀 겸손해져 보세요. 남들은 당신 열정 때문에 기 빨려요!"
+  },
+  {
+    id: 13,
+    name: "개인주의 부엉이",
+    emoji: "🦉",
+    color: "#F3E5F5",
+    subColor: "#E1BEE7",
+    factBombs: ["사회성 부족함", "혼자가 세상 편함", "남 인생 관심 없음", "철벽 방어 장인"],
+    description: "똑똑하긴 한데 가끔은 로봇 같아요. 인간미 좀 충전해서 사람들하고 어울려보세요."
+  },
+  {
+    id: 14,
+    name: "징징이 병아리",
+    emoji: "🐥",
+    color: "#FFFDE7",
+    subColor: "#FFF9C4",
+    factBombs: ["해달라는 거 오조오억개", "은근히 민폐 스타일", "혼자서는 아무것도 못함", "엄살 대장"],
+    description: "귀여운 것도 한두 번이죠. 스스로 할 줄 아는 법도 좀 배워야 어른이 된답니다."
+  },
+  {
+    id: 15,
+    name: "산만함 1등 원숭이",
+    emoji: "🐒",
+    color: "#EFEBE9",
+    subColor: "#D7CCC8",
+    factBombs: ["주의력 결핍", "진득함 0%", "말이 너무 많음", "쉽게 질려함"],
+    description: "하나라도 제대로 끝내본 적 있나요? 이리저리 옮겨 다니지 말고 집중 좀 하세요!"
   }
 ];
 
@@ -205,9 +232,11 @@ function App() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       const finalScore = nextScore;
-      let index = Math.floor(((finalScore - 6) / 13) * 12);
+      // 6~18점 범위를 15개 유형으로 매핑
+      // index = floor((score - min) / (max - min + 1) * count)
+      let index = Math.floor(((finalScore - 6) / 13) * 15);
       if (index < 0) index = 0;
-      if (index > 11) index = 11;
+      if (index > 14) index = 14;
       
       setResult(PERSONAS[index]);
       setStep('result');
@@ -220,10 +249,10 @@ function App() {
         {step === 'landing' && (
           <div className="landing-view">
             <div className="hero">
-              <div className="main-character">✨</div>
-              <h1>나의 숨겨진 <br/><span>동물 팩폭 MBTI</span></h1>
-              <p>아기자기한데 뼈는 때리는 <br/>나의 진짜 성격 진단</p>
-              <button className="btn-start" onClick={startQuiz}>테스트 시작하기! &rarr;</button>
+              <div className="main-character-float">✨</div>
+              <h1>뼈 때리는 <br/><span>동물 팩폭 MBTI</span></h1>
+              <p>아기자기하게 생겨서 <br/>할 말은 다 하는 성격 진단</p>
+              <button className="btn-start" onClick={startQuiz}>팩폭 맞으러 가기 &rarr;</button>
             </div>
           </div>
         )}
@@ -237,7 +266,7 @@ function App() {
               ></div>
             </div>
             <div className="question-box">
-              <span className="q-number">Q{currentQuestion + 1}</span>
+              <span className="q-number">질문 {currentQuestion + 1}</span>
               <h2>{QUESTIONS[currentQuestion].text}</h2>
               <div className="options-grid">
                 {QUESTIONS[currentQuestion].options.map((option, i) => (
@@ -258,25 +287,27 @@ function App() {
           <div className="result-view" style={{ '--theme-color': result.color, '--sub-color': result.subColor } as any}>
             <div className="result-card">
               <div className="result-header">
-                <div className="char-circle">
+                <h2 className="result-name">{result.name}</h2>
+                <div className="char-stage">
                   <span className="result-emoji">{result.emoji}</span>
                 </div>
-                <h2 className="result-name">{result.name}</h2>
               </div>
 
-              <div className="traits-container">
-                {result.traits.map((trait, i) => (
-                  <span key={i} className="trait-tag">{trait}</span>
+              <div className="bubbles-container">
+                {result.factBombs.map((bomb, i) => (
+                  <div key={i} className={`speech-bubble bubble-${i + 1}`}>
+                    {bomb}
+                  </div>
                 ))}
               </div>
 
               <div className="result-body">
-                <div className="desc-card">
+                <div className="final-desc">
                   <p>{result.description}</p>
                 </div>
               </div>
 
-              <button className="btn-retry" onClick={() => setStep('landing')}>다시 해보기 🔄</button>
+              <button className="btn-retry" onClick={() => setStep('landing')}>다시 테스트 (정신 차리기) 🔄</button>
             </div>
           </div>
         )}
