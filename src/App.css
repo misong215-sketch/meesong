@@ -188,48 +188,56 @@ body {
   animation: bounce 2s infinite;
 }
 
-/* Bombs Grid - Speech Bubbles Style */
+/* Bombs Grid - Multi-colored Bubbles Style */
 .bombs-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 30px;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .mini-bubble {
   background: #2d3436;
   color: white;
-  padding: 10px 15px;
-  border-radius: 18px;
-  font-size: 0.85rem;
+  padding: 8px 14px;
+  border-radius: 15px;
+  font-size: 0.8rem;
   font-weight: 700;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   animation: popIn 0.5s ease-out both;
   word-break: keep-all;
 }
 
-/* Speech bubble tail */
+/* Alternate colors for variety */
+.mini-bubble:nth-child(3n) { background: #636e72; }
+.mini-bubble:nth-child(3n+1) { background: #2d3436; }
+.mini-bubble:nth-child(3n+2) { background: #4b4b4b; }
+
 .mini-bubble::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 8px solid #2d3436;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid inherit; /* Doesn't work, will fix manually */
 }
 
-/* Random rotation for cute look */
-.mini-bubble:nth-child(even) { transform: rotate(2deg); }
-.mini-bubble:nth-child(odd) { transform: rotate(-2deg); }
+/* Individual tails to match backgrounds */
+.mini-bubble:nth-child(3n)::after { border-top-color: #636e72; }
+.mini-bubble:nth-child(3n+1)::after { border-top-color: #2d3436; }
+.mini-bubble:nth-child(3n+2)::after { border-top-color: #4b4b4b; }
 
-/* Sequential animation delay */
+.mini-bubble:nth-child(even) { transform: rotate(1deg); }
+.mini-bubble:nth-child(odd) { transform: rotate(-1deg); }
+
+/* Animation Delays for cascading effect */
 .mini-bubble:nth-child(1) { animation-delay: 0.1s; }
 .mini-bubble:nth-child(2) { animation-delay: 0.15s; }
 .mini-bubble:nth-child(3) { animation-delay: 0.2s; }
@@ -255,6 +263,7 @@ body {
   font-weight: 600;
   font-size: 0.95rem;
   margin-bottom: 30px;
+  border: 2px solid #f1f2f6;
 }
 
 .btn-retry {
@@ -287,7 +296,7 @@ body {
 }
 
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.5) translateY(10px); }
+  from { opacity: 0; transform: scale(0.5) translateY(5px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
@@ -305,5 +314,5 @@ body {
 
 @media (max-width: 480px) {
   .hero h1 { font-size: 2.2rem; }
-  .mini-bubble { font-size: 0.75rem; padding: 8px 12px; }
+  .mini-bubble { font-size: 0.75rem; padding: 6px 10px; }
 }
