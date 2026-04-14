@@ -10,11 +10,10 @@ interface Question {
 interface Persona {
   id: number;
   name: string;
-  animal: string;
   emoji: string;
   color: string;
-  title: string;
-  factBomb: string[];
+  subColor: string;
+  traits: string[];
   description: string;
 }
 
@@ -79,182 +78,110 @@ const PERSONAS: Persona[] = [
   {
     id: 1,
     name: "귀차니즘 만렙 판다",
-    animal: "Panda",
     emoji: "🐼",
     color: "#F5F5F5",
-    title: "숨 쉬는 것도 가끔 귀찮음",
-    factBomb: [
-      "누워있는 게 인생의 목표임",
-      "말투에서 영혼이 이미 가출함",
-      "해야 할 일? 내일의 내가 하겠지",
-      "연락 안 됨. 답장 기다리다 사리 나옴"
-    ],
-    description: "당신은 세상에서 가장 평화로운 존재지만, 가끔은 너무 평화로워서 정지 화면인 줄 알았어요."
+    subColor: "#E0E0E0",
+    traits: ["귀차니즘 심함", "침대와 물아일체", "연락 매우 느림", "평화주의자"],
+    description: "숨 쉬는 것도 가끔은 귀찮아하는 당신! 하지만 누구보다 평화롭고 느긋한 마음씨를 가졌네요."
   },
   {
     id: 2,
     name: "계획 집착러 다람쥐",
-    animal: "Squirrel",
     emoji: "🐿️",
     color: "#FFF3E0",
-    title: "1분 단위로 인생 설계 중",
-    factBomb: [
-      "계획 틀어지면 동공 지진 남",
-      "메모장에 집착함. 메모의 메모를 함",
-      "남의 비효율적인 행동 보면 화남",
-      "본인만 아는 규칙이 너무 많음"
-    ],
-    description: "준비성이 철저한 건 좋지만, 가끔은 도토리 숨긴 곳을 까먹는 다람쥐처럼 여유를 가져보세요."
+    subColor: "#FFE0B2",
+    traits: ["계획에 진심임", "메모광", "시간 엄수 철저", "알고보면 완벽주의"],
+    description: "준비성이 철저한 당신! 가끔은 도토리를 숨긴 곳을 까먹는 다람쥐처럼 여유를 가져보는 건 어떨까요?"
   },
   {
     id: 3,
     name: "유리멘탈 고양이",
-    animal: "Cat",
     emoji: "🐱",
     color: "#FCE4EC",
-    title: "파워 예민! 건드리면 하악질",
-    factBomb: [
-      "혼자 있고 싶은데 외로운 건 싫음",
-      "말 한마디에 밤새 이불킥 함",
-      "낯가림 만렙. 친해지기 난이도 극악",
-      "기분파라서 주변 사람들 눈치 보게 함"
-    ],
-    description: "까칠해 보이지만 사실은 사랑받고 싶은 츤데레! 마음의 벽을 조금만 낮춰봐요."
+    subColor: "#F8BBD0",
+    traits: ["눈치 매우 빠름", "알고보면 따뜻함", "혼자있기 장인", "파워 예민"],
+    description: "까칠해 보이지만 사실은 속정이 깊은 당신! 마음의 벽을 조금만 낮추면 더 행복해질 거예요."
   },
   {
     id: 4,
     name: "무한긍정 댕댕이",
-    animal: "Dog",
     emoji: "🐶",
     color: "#FFFDE7",
-    title: "세상은 아름다워! 꼬리 붕붕",
-    factBomb: [
-      "사람을 너무 좋아해서 사기당하기 딱 좋음",
-      "생각이라는 걸 가끔 안 함",
-      "분위기 파악 못 하고 혼자 신남",
-      "거절 못 해서 온갖 일 다 떠맡음"
-    ],
-    description: "당신의 에너지는 주변을 밝게 하지만, 가끔은 멈춰 서서 현실을 직시할 필요가 있어요."
+    subColor: "#FFF9C4",
+    traits: ["친화력 만렙", "단순 명료함", "꼬리 헬리콥터", "무한 긍정"],
+    description: "세상 모든 게 즐거운 당신! 당신의 에너지는 주변 사람들을 항상 행복하게 만든답니다."
   },
   {
     id: 5,
     name: "팩트 살인마 여우",
-    animal: "Fox",
     emoji: "🦊",
     color: "#FFEBEE",
-    title: "논리로 다 패고 다님",
-    factBomb: [
-      "공감 능력 지능 문제라고 생각함",
-      "맞는 말만 하는데 기분은 나쁨",
-      "효율성 따지느라 인간미 실종됨",
-      "지기 싫어서 끝까지 말꼬리 잡음"
-    ],
-    description: "똑똑한 건 인정! 하지만 가끔은 정답보다 따뜻한 위로 한마디가 더 중요할 때도 있답니다."
+    subColor: "#FFCDD2",
+    traits: ["논리 끝판왕", "팩폭 장인", "효율 중시", "지능캐 여우"],
+    description: "정답만 말하는 당신! 가끔은 정답보다 따뜻한 위로 한마디가 더 큰 힘이 될 때가 있어요."
   },
   {
     id: 6,
     name: "소심한 관종 햄스터",
-    animal: "Hamster",
     emoji: "🐹",
     color: "#FCE4EC",
-    title: "구석이 좋은데 주목받고 싶어",
-    factBomb: [
-      "먼저 말 못 거는데 관심은 받고 싶음",
-      "온라인에서는 핵인싸, 오프라인은 쭈구리",
-      "댓글 하나하나에 일희일비함",
-      "칭찬해주면 하루 종일 그 생각만 함"
-    ],
-    description: "해바라기씨처럼 소중한 당신의 매력을 조금 더 당당하게 보여줘도 괜찮아요!"
+    subColor: "#F8BBD0",
+    traits: ["내적 댄스 중", "쭈구리 관종", "칭찬에 약함", "해바라기씨 사랑"],
+    description: "관심은 받고 싶지만 나서는 건 무서운 당신! 당신의 존재만으로도 충분히 빛나고 있어요."
   },
   {
     id: 7,
     name: "마이웨이 호랑이",
-    animal: "Tiger",
     emoji: "🐯",
     color: "#FFF3E0",
-    title: "다 비켜! 내 갈 길 간다",
-    factBomb: [
-      "남의 조언? 응 안 들어",
-      "고집이 황소고집 수준임",
-      "본인 빼고 다 답답해함",
-      "하고 싶은 건 무조건 해야 직성 풀림"
-    ],
-    description: "리더십은 멋지지만, 주변 사람들의 목소리에도 귀를 기울여야 진정한 왕이 될 수 있어요."
+    subColor: "#FFE0B2",
+    traits: ["고집 불통", "리더십 장인", "솔직함 주의", "내 갈 길 간다"],
+    description: "남들 눈치 안 보고 당당한 당신! 당신의 리더십은 멋지지만 주변 목소리도 조금만 들어주세요."
   },
   {
     id: 8,
     name: "걱정 인형 토끼",
-    animal: "Rabbit",
     emoji: "🐰",
     color: "#E1F5FE",
-    title: "세상 걱정 혼자 다 함",
-    factBomb: [
-      "일어나지도 않은 일로 소설 씀",
-      "결정 장애 심각함. 메뉴 하나 못 고름",
-      "남 눈치 보느라 본인 실속 못 챙김",
-      "작은 일에도 깜짝깜짝 놀람"
-    ],
-    description: "걱정은 나누면 반이 된다지만, 당신은 나누기엔 너무 많은 걱정을 쌓아두고 있네요."
+    subColor: "#B3E5FC",
+    traits: ["생각이 너무 많음", "걱정 과부하", "결정 장애", "깜짝 잘 놀람"],
+    description: "일어나지도 않은 일로 고민하는 당신! 걱정의 90%는 실제로 일어나지 않는답니다. 힘내세요!"
   },
   {
     id: 9,
-    name: "게으른 완벽주의 나무늘보",
-    animal: "Sloth",
+    name: "완벽주의 나무늘보",
     emoji: "🦥",
     color: "#EFEBE9",
-    title: "시작은 창대하나 끝은 침대",
-    factBomb: [
-      "계획은 우주 정복급인데 실천은 0",
-      "완벽하게 안 할 거면 아예 안 함",
-      "누구보다 빠르게 남들과는 다르게 눕고 싶음",
-      "마감 직전에 초인적인 힘 발휘함"
-    ],
-    description: "생각만 하다가 기회를 놓치지 마세요. 가끔은 완벽보다 시작이 더 중요하니까요."
+    subColor: "#D7CCC8",
+    traits: ["느릿느릿 완벽", "시작이 힘들군", "은근 고집셈", "프로 잠만보"],
+    description: "완벽을 추구하느라 시작이 늦는 당신! 가끔은 완벽보다 일단 해보는 것이 더 중요하답니다."
   },
   {
     id: 10,
-    name: "친절한 오지랖 코끼리",
-    animal: "Elephant",
+    name: "오지랖 코끼리",
     emoji: "🐘",
     color: "#ECEFF1",
-    title: "우리 모두 친구야! (피곤)",
-    factBomb: [
-      "남의 일 해결해주느라 내 일 못 함",
-      "거절하면 큰일 나는 줄 암",
-      "모든 사람한테 다 맞춰줌",
-      "혼자 상처받고 겉으로는 웃음"
-    ],
-    description: "착한 사람 증후군에서 벗어나세요. 당신의 마음을 먼저 챙기는 것이 가장 중요합니다."
+    subColor: "#CFD8DC",
+    traits: ["거절 못함", "친절함 과다", "공감 요정", "프로 고민상담러"],
+    description: "남 챙기느라 본인은 못 챙기는 당신! 오늘은 자신을 위해 선물을 하나 해보는 건 어떨까요?"
   },
   {
     id: 11,
-    name: "상상력 과부하 고래",
-    animal: "Whale",
+    name: "몽상가 고래",
     emoji: "🐳",
     color: "#E3F2FD",
-    title: "꿈속에서 사는 중",
-    factBomb: [
-      "현실 파악 안 됨. 몽상가 기질 다분",
-      "특이하다는 말 은근 즐김",
-      "말투가 4차원적임",
-      "감수성 폭발해서 혼자 눈물 훔침"
-    ],
-    description: "넓은 바다를 헤엄치는 고래처럼 자유로운 영혼! 하지만 현실의 땅도 밟아보세요."
+    subColor: "#BBDEFB",
+    traits: ["상상력 폭발", "자유로운 영혼", "감성 끝판왕", "4차원 몽상가"],
+    description: "넓은 바다를 꿈꾸는 당신! 당신의 창의적인 생각은 세상을 더 아름답게 만들 수 있어요."
   },
   {
     id: 12,
     name: "열정 만수르 사자",
-    animal: "Lion",
     emoji: "🦁",
     color: "#FFF3E0",
-    title: "오늘을 불태우자! 화르르",
-    factBomb: [
-      "남들 피곤하게 만드는 스타일",
-      "가만히 있는 꼴을 못 봄",
-      "모든 걸 경쟁으로 받아들임",
-      "본인 열정 강요해서 주변 사람 탈진함"
-    ],
-    description: "열정은 좋지만 가끔은 불을 끄고 휴식하세요. 엔진도 쉬어야 오래 달리는 법입니다."
+    subColor: "#FFE0B2",
+    traits: ["열정 폭발", "승부욕 강함", "자기애 뿜뿜", "직진 불도저"],
+    description: "어디서든 주인공이 되어야 하는 당신! 당신의 열정은 멋지지만 가끔은 휴식도 필요해요."
   }
 ];
 
@@ -277,7 +204,6 @@ function App() {
     if (currentQuestion < QUESTIONS.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // 6-18 point range mapped to 0-11 index
       const finalScore = nextScore;
       let index = Math.floor(((finalScore - 6) / 13) * 12);
       if (index < 0) index = 0;
@@ -294,10 +220,10 @@ function App() {
         {step === 'landing' && (
           <div className="landing-view">
             <div className="hero">
-              <span className="main-emoji">✨</span>
-              <h1>귀염뽀짝 <br/><span>팩폭 MBTI</span></h1>
+              <div className="main-character">✨</div>
+              <h1>나의 숨겨진 <br/><span>동물 팩폭 MBTI</span></h1>
               <p>아기자기한데 뼈는 때리는 <br/>나의 진짜 성격 진단</p>
-              <button className="btn-start" onClick={startQuiz}>나의 정체성 확인하기 &rarr;</button>
+              <button className="btn-start" onClick={startQuiz}>테스트 시작하기! &rarr;</button>
             </div>
           </div>
         )}
@@ -310,7 +236,7 @@ function App() {
                 style={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
               ></div>
             </div>
-            <div className="question-container">
+            <div className="question-box">
               <span className="q-number">Q{currentQuestion + 1}</span>
               <h2>{QUESTIONS[currentQuestion].text}</h2>
               <div className="options-grid">
@@ -329,30 +255,28 @@ function App() {
         )}
 
         {step === 'result' && result && (
-          <div className="result-view" style={{ '--result-color': result.color } as any}>
+          <div className="result-view" style={{ '--theme-color': result.color, '--sub-color': result.subColor } as any}>
             <div className="result-card">
-              <header className="result-header">
-                <span className="result-emoji">{result.emoji}</span>
-                <p className="type-title">{result.title}</p>
-                <h2 className="type-name">{result.name}</h2>
-              </header>
-
-              <div className="result-content">
-                <div className="fact-bomb-box">
-                  <h3>🚫 팩트 폭격 주의</h3>
-                  <ul>
-                    {result.factBomb.map((fact, i) => (
-                      <li key={i}>{fact}</li>
-                    ))}
-                  </ul>
+              <div className="result-header">
+                <div className="char-circle">
+                  <span className="result-emoji">{result.emoji}</span>
                 </div>
+                <h2 className="result-name">{result.name}</h2>
+              </div>
 
-                <div className="desc-box">
+              <div className="traits-container">
+                {result.traits.map((trait, i) => (
+                  <span key={i} className="trait-tag">{trait}</span>
+                ))}
+              </div>
+
+              <div className="result-body">
+                <div className="desc-card">
                   <p>{result.description}</p>
                 </div>
               </div>
 
-              <button className="btn-retry" onClick={() => setStep('landing')}>다시 테스트하기</button>
+              <button className="btn-retry" onClick={() => setStep('landing')}>다시 해보기 🔄</button>
             </div>
           </div>
         )}
@@ -361,12 +285,9 @@ function App() {
       <div className="a2a_kit a2a_kit_size_32 a2a_default_style share-buttons">
         <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
         <a className="a2a_button_facebook"></a>
-        <a className="a2a_button_mastodon"></a>
-        <a className="a2a_button_email"></a>
-        <a className="a2a_button_sms"></a>
-        <a className="a2a_button_reddit"></a>
         <a className="a2a_button_kakao"></a>
         <a className="a2a_button_twitter"></a>
+        <a className="a2a_button_line"></a>
       </div>
     </div>
   )
