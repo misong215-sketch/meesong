@@ -170,6 +170,7 @@ body {
   padding: 8px 25px;
   border-radius: 20px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 0px rgba(0,0,0,0.05);
 }
 
 .char-stage {
@@ -181,6 +182,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 30px;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.5);
 }
 
 .result-emoji {
@@ -188,56 +190,62 @@ body {
   animation: bounce 2s infinite;
 }
 
-/* Bombs Grid - Multi-colored Bubbles Style */
+/* Bombs Grid - Bright Multi-colored Bubbles Style */
 .bombs-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 30px;
   padding: 0 5px;
 }
 
 .mini-bubble {
-  background: #2d3436;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  background: white;
+  color: #2d3436;
+  padding: 9px 15px;
+  border-radius: 18px;
+  font-size: 0.85rem;
+  font-weight: 800;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   animation: popIn 0.5s ease-out both;
   word-break: keep-all;
+  border: 2.5px solid #2d3436; /* Default border */
 }
 
-/* Alternate colors for variety */
-.mini-bubble:nth-child(3n) { background: #636e72; }
-.mini-bubble:nth-child(3n+1) { background: #2d3436; }
-.mini-bubble:nth-child(3n+2) { background: #4b4b4b; }
+/* Bright Border Colors */
+.mini-bubble:nth-child(5n+1) { border-color: #ff7675; color: #d63031; background: #fff5f5; }
+.mini-bubble:nth-child(5n+2) { border-color: #74b9ff; color: #0984e3; background: #f0f7ff; }
+.mini-bubble:nth-child(5n+3) { border-color: #55efc4; color: #00b894; background: #f0fff9; }
+.mini-bubble:nth-child(5n+4) { border-color: #ffeaa7; color: #d35400; background: #fffdf0; }
+.mini-bubble:nth-child(5n+5) { border-color: #a29bfe; color: #6c5ce7; background: #f5f3ff; }
 
+/* Speech bubble tail */
 .mini-bubble::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -7px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid inherit; /* Doesn't work, will fix manually */
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid #2d3436;
 }
 
-/* Individual tails to match backgrounds */
-.mini-bubble:nth-child(3n)::after { border-top-color: #636e72; }
-.mini-bubble:nth-child(3n+1)::after { border-top-color: #2d3436; }
-.mini-bubble:nth-child(3n+2)::after { border-top-color: #4b4b4b; }
+/* Tail color matching border */
+.mini-bubble:nth-child(5n+1)::after { border-top-color: #ff7675; }
+.mini-bubble:nth-child(5n+2)::after { border-top-color: #74b9ff; }
+.mini-bubble:nth-child(5n+3)::after { border-top-color: #55efc4; }
+.mini-bubble:nth-child(5n+4)::after { border-top-color: #ffeaa7; }
+.mini-bubble:nth-child(5n+5)::after { border-top-color: #a29bfe; }
 
-.mini-bubble:nth-child(even) { transform: rotate(1deg); }
-.mini-bubble:nth-child(odd) { transform: rotate(-1deg); }
+.mini-bubble:nth-child(even) { transform: rotate(1.5deg); }
+.mini-bubble:nth-child(odd) { transform: rotate(-1.5deg); }
 
-/* Animation Delays for cascading effect */
+/* Animation Delays */
 .mini-bubble:nth-child(1) { animation-delay: 0.1s; }
 .mini-bubble:nth-child(2) { animation-delay: 0.15s; }
 .mini-bubble:nth-child(3) { animation-delay: 0.2s; }
@@ -314,5 +322,5 @@ body {
 
 @media (max-width: 480px) {
   .hero h1 { font-size: 2.2rem; }
-  .mini-bubble { font-size: 0.75rem; padding: 6px 10px; }
+  .mini-bubble { font-size: 0.75rem; padding: 7px 12px; }
 }
