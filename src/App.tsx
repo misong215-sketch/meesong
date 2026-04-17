@@ -289,11 +289,16 @@ const PERSONAS: Persona[] = [
 
 function App() {
   const [step, setStep] = useState<'landing' | 'quiz' | 'result'>('landing');
+  const [userName, setUserName] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [result, setResult] = useState<Persona | null>(null);
 
   const startQuiz = () => {
+    if (!userName.trim()) {
+      alert('이름을 입력해 주세요!');
+      return;
+    }
     setStep('quiz');
     setCurrentQuestion(0);
     setTotalScore(0);
@@ -325,6 +330,18 @@ function App() {
               <div className="main-character-float">✨</div>
               <h1>나에게 꼭 맞는 <br/><span>퍼스널 핏 & 루틴 진단</span></h1>
               <p>내 라이프스타일에 최적화된 <br/>나만의 다이어트 성향 테스트</p>
+              
+              <div className="input-group">
+                <input 
+                  type="text" 
+                  placeholder="이름을 입력하세요" 
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  className="name-input"
+                  onKeyPress={(e) => e.key === 'Enter' && startQuiz()}
+                />
+              </div>
+
               <button className="btn-start" onClick={startQuiz}>테스트 시작하기 &rarr;</button>
             </div>
           </div>
@@ -360,6 +377,7 @@ function App() {
           <div className="result-view" style={{ '--theme-color': result.color, '--sub-color': result.subColor } as any}>
             <div className="result-card">
               <div className="result-header">
+                <p className="user-greeting"><span>{userName}</span>님의 진단 결과</p>
                 <h2 className="result-name">{result.name}</h2>
                 <div className="char-stage">
                   <span className="result-emoji">{result.emoji}</span>
