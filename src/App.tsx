@@ -14,7 +14,6 @@ interface Question {
 
 interface Persona {
   id: number;
-  mbti: string;
   name: string;
   emoji: string;
   color: string;
@@ -177,26 +176,106 @@ const QUESTIONS: Question[] = [
 ];
 
 const PERSONAS: Persona[] = [
-  { id: 1, mbti: "INTJ-A", name: "우주급 브레인 외계인", emoji: "👽", color: "#E1F5FE", borderColor: "#2980b9", factBombs: ["지구 정복 계획 중", "감정은 데이터일 뿐", "혼자가 제일 편함", "극강의 효율 추구"], description: "당신은 범접할 수 없는 지능을 가진 전략가! 세상을 데이터로 분석하는 냉철한 외계인입니다." },
-  { id: 2, mbti: "ISTJ", name: "청렴결백 법전 거북이", emoji: "🐢", color: "#F5F5F5", borderColor: "#2d3436", factBombs: ["원칙 없인 못 살아", "알람 10개 필수", "정리정돈의 달인", "느리지만 정확함"], description: "당신은 한 치의 오차도 허용하지 않는 완벽주의자! 성실함으로 세상을 지탱하는 거북이입니다." },
-  { id: 3, mbti: "INFJ", name: "신비로운 유니콘", emoji: "🦄", color: "#F3E5F5", borderColor: "#9b59b6", factBombs: ["속 깊은 몽상가", "사람 마음 꿰뚫음", "나만의 세계 뚜렷", "조용한 카리스마"], description: "당신은 신비로운 통찰력을 가진 선지자! 따뜻한 마음으로 세상을 아름답게 보는 유니콘입니다." },
-  { id: 4, mbti: "INTJ", name: "전략가 검은 고양이", emoji: "🐈‍⬛", color: "#ECEFF1", borderColor: "#34495e", factBombs: ["계획대로 되고 있어", "멍청함은 죄다", "독립심 우주 돌파", "시니컬한 매력"], description: "당신은 모든 것을 꿰뚫어 보는 지략가! 날카로운 분석력으로 정답만 찾아내는 고양이입니다." },
-  { id: 5, mbti: "ISFJ", name: "다정한 수호천사", emoji: "😇", color: "#FFFDE7", borderColor: "#f1c40f", factBombs: ["기억력 만렙", "남 몰래 배려하기", "성실한 거부기", "예의 바른 생활"], description: "당신은 주변을 따뜻하게 지켜주는 수호자! 섬세한 배려로 모두의 마음을 녹여줍니다." },
-  { id: 6, mbti: "ISTP", name: "쿨한 해결사 고양이", emoji: "🐈", color: "#EFEBE9", borderColor: "#795548", factBombs: ["말보다 행동", "기계 조작 달인", "귀차니즘의 대가", "위기 탈출 1등"], description: "당신은 자유로운 영혼의 실전파! 어떤 문제든 쿨하게 해결해버리는 매력적인 고양이입니다." },
-  { id: 7, mbti: "ISFP", name: "감성 충만 나비", emoji: "🦋", color: "#FCE4EC", borderColor: "#e91e63", factBombs: ["현재가 제일 중요", "아름다움 덕후", "갈등은 피하고 싶어", "유리 멘탈 주의"], description: "당신은 삶을 예술처럼 사는 낭만가! 자유롭고 따뜻한 감성으로 세상을 수놓는 나비입니다." },
-  { id: 8, mbti: "INFP", name: "꿈꾸는 아기 토끼", emoji: "🐰", color: "#E1F5FE", borderColor: "#3498db", factBombs: ["상상력 대폭발", "혼자서도 잘 놀아요", "마음이 너무 여림", "금방 사랑에 빠짐"], description: "당신은 마음속에 거대한 우주를 품은 몽상가! 순수한 마음으로 세상을 꿈꾸는 토끼입니다." },
-  { id: 9, mbti: "INTP", name: "아이디어 뱅크 다람쥐", emoji: "🐿️", color: "#FFEBEE", borderColor: "#e74c3c", factBombs: ["왜?라고 묻기", "지적 호기심 폭발", "도토리 대신 지식", "논리 왕국 건설"], description: "당신은 끊임없이 질문을 던지는 지식 탐구자! 새로운 생각으로 가득 찬 똑똑한 다람쥐입니다." },
-  { id: 10, mbti: "ESTP", name: "액티브 액션 사자", emoji: "🦁", color: "#FFF3E0", borderColor: "#e67e22", factBombs: ["일단 지르고 봄", "에너지 과부하", "말솜씨 화려함", "인생은 스릴"], description: "당신은 두려움 없는 도전가! 넘치는 에너지로 어디서든 주인공이 되는 용맹한 사자입니다." },
-  { id: 11, mbti: "ESFP", name: "슈퍼스타 댕댕이", emoji: "🐶", color: "#FFF9C4", borderColor: "#f39c12", factBombs: ["흥이 넘침", "주목받는 게 인생의 낙", "리액션 혜자", "지금 이 순간 즐겨"], description: "당신은 인생이 축제인 타고난 연예인! 밝은 미소로 세상을 환하게 비추는 댕댕이입니다." },
-  { id: 12, mbti: "ENFP", name: "호기심 많은 여우", emoji: "🦊", color: "#E8F5E9", borderColor: "#2ecc71", factBombs: ["사람이 제일 좋아", "아이디어 화수분", "금방 질림 주의", "긍정 파워 만렙"], description: "당신은 반짝이는 아이디어로 가득 찬 행복 전도사! 사람들에게 큰 즐거움을 주는 여우입니다." },
-  { id: 13, mbti: "ENTP", name: "기발한 악동 원숭이", emoji: "🐒", color: "#E0F2F1", borderColor: "#1abc9c", factBombs: ["말싸움 1등", "기존 방식 거부", "토론이 제일 재밌음", "천재 혹은 변태"], description: "당신은 고정관념을 깨부수는 혁신가! 기발한 생각으로 늘 새로운 즐거움을 찾는 원숭이입니다." },
-  { id: 14, mbti: "ESTJ", name: "엄격한 관리자 호랑이", emoji: "🐯", color: "#ECEFF1", borderColor: "#2c3e50", factBombs: ["결과 중심주의", "질서와 법 중시", "강한 책임감", "리더십 발휘"], description: "당신은 사회를 지탱하는 든든한 기둥! 확실한 목표와 규율로 성과를 만들어내는 호랑이입니다." },
-  { id: 15, mbti: "ESFJ", name: "사교적인 꽃사슴", emoji: "🦌", color: "#FFFDE7", borderColor: "#fdcb6e", factBombs: ["분위기 파악 1등", "남 챙기기 진심", "공감 능력 최고", "예의 바른 생활"], description: "당신은 사람들을 끈끈하게 연결하는 외교관! 따뜻한 공감으로 평화를 만드는 사슴입니다." },
-  { id: 16, mbti: "ENFJ", name: "정의로운 햇살 곰", emoji: "🐻", color: "#FFF3E0", borderColor: "#e67e22", factBombs: ["선한 영향력", "동기부여의 달인", "리더십 끝판왕", "이상적인 세상 추구"], description: "당신은 타인의 성장을 돕는 위대한 스승! 따뜻한 카리스마로 사람들을 이끄는 곰입니다." },
-  { id: 17, mbti: "ENTJ", name: "정복자 독수리", emoji: "🦅", color: "#FFEBEE", borderColor: "#c0392b", factBombs: ["강력한 추진력", "장기적 비전", "자신감 뿜뿜", "성과가 전부"], description: "당신은 목표를 향해 진격하는 리더! 압도적인 추진력으로 승리를 쟁취하는 독수리입니다." },
-  { id: 18, mbti: "INFP-T", name: "무지개빛 힐러 천사", emoji: "👼", color: "#FCE4EC", borderColor: "#ff7675", factBombs: ["모두를 치유함", "순수함 100%", "상처 잘 받음", "세상의 빛"], description: "당신은 지친 이들의 마음을 어루만지는 천사! 따뜻한 영혼으로 세상을 구원합니다." },
-  { id: 19, mbti: "ESTP-T", name: "에너지 엔진 로봇", emoji: "🤖", color: "#EFEBE9", borderColor: "#95a5a6", factBombs: ["지치지 않는 체력", "논리적 행동파", "새로운 거 환장", "스피드 광"], description: "당신은 지치지 않는 열정을 가진 로봇! 엄청난 속도로 목표를 향해 달려갑니다." },
-  { id: 20, mbti: "ENFP-T", name: "무지개 파티 피플", emoji: "🌈", color: "#FFF9C4", borderColor: "#8e44ad", factBombs: ["매일매일 축제", "우주급 텐션", "모두가 내 친구", "흥 대폭발"], description: "당신은 존재만으로도 주변을 축제로 만드는 주인공! 우주 최강의 흥을 가졌습니다." }
+  { 
+    id: 1, name: "이불 밖은 위험해! 프로 집순이", emoji: "🛋️", color: "#F5F5F5", borderColor: "#2d3436", 
+    factBombs: ["침대가 제2의 심장", "연락은 용건만 간단히", "나가기까지 3박 4일 고민", "집에서 제일 바쁨", "배달 앱 VIP", "씻는 것도 미룸", "넷플릭스 고인물", "내적 댄스 장인"], 
+    description: "혼자 있을 때 에너지가 폭발하는 당신! 사회적 가면을 벗고 이불 속에서 가장 자유로운 영혼이 됩니다." 
+  },
+  { 
+    id: 2, name: "걸어다니는 구글 캘린더", emoji: "📅", color: "#E3F2FD", borderColor: "#1976D2", 
+    factBombs: ["알람 없으면 불안함", "정리정돈의 신", "예측 가능한게 좋아", "칼퇴가 인생의 목표", "지각은 죄악", "메모장 중독", "체크리스트 변태", "효율성 극대화"], 
+    description: "질서 정연한 삶을 사랑하는 당신! 당신의 철저한 계획 덕분에 세상이 무너지지 않고 돌아가고 있습니다." 
+  },
+  { 
+    id: 3, name: "눈물 많은 갬성 고래", emoji: "🐳", color: "#E1F5FE", borderColor: "#03A9F4", 
+    factBombs: ["상상력 대폭발", "혼자만의 세계 뚜렷", "금방 사랑에 빠짐", "감수성 끝판왕", "새벽 2시 갬성", "거절 못해서 고민", "프로 공감러", "애니메이션 덕후"], 
+    description: "남들이 보지 못하는 따뜻한 세상을 꿈꾸는 당신! 풍부한 감수성으로 주변 사람들의 마음을 치유하는 마법사입니다." 
+  },
+  { 
+    id: 4, name: "열정 만수르 햇님", emoji: "☀️", color: "#FFF3E0", borderColor: "#FF9800", 
+    factBombs: ["모임의 중심", "리액션 혜자", "남 도와주다 하루 다 감", "오지떱도 사랑", "분위기 메이커", "텐션 폭주족", "미워할 수 없는 푼수", "칭찬 갈구형"], 
+    description: "주변에 밝은 에너지를 전파하며 모두를 이끄는 따뜻한 리더! 당신이 없는 모임은 팥 없는 찐빵과 같죠." 
+  },
+  { 
+    id: 5, name: "냉철한 얼음 송곳 전략가", emoji: "🧊", color: "#F3E5F5", borderColor: "#9C27B0", 
+    factBombs: ["감정보다 논리", "팩폭 제조기", "비효율은 용납 못함", "혼자가 제일 똑똑", "T발 너 C야?", "질문 빌런", "냉소적인 유머", "팩트 체크 장인"], 
+    description: "날카로운 분석력으로 복잡한 문제를 해결하는 최고의 전략가! 때로는 차가워 보이지만 누구보다 정확한 답을 제시합니다." 
+  },
+  { 
+    id: 6, name: "자유로운 영혼 무지개 구름", emoji: "☁️", color: "#E8F5E9", borderColor: "#4CAF50", 
+    factBombs: ["호기심 천국", "금방 질림 주의", "친구가 우주급", "세상이 다 신기함", "즉흥 여행 마스터", "아이디어 화수분", "속박은 거부한다", "해맑은 광기"], 
+    description: "반짝이는 아이디어와 긍정 에너지로 즐거움을 찾는 분위기 메이커! 당신의 삶은 매일이 새로운 모험입니다." 
+  },
+  { 
+    id: 7, name: "세심한 관찰자 돋보기", emoji: "🔍", color: "#FFFDE7", borderColor: "#FBC02D", 
+    factBombs: ["기억력 만렙", "남 챙기기 1등", "안 보이는 곳까지 청소", "소심한 배려왕", "뒤끝 조금 있음", "안정 제일주의", "리액션 봇", "은근히 관종"], 
+    description: "세심한 관찰력으로 주변 사람들을 조용히 챙겨주는 마음 따뜻한 수호자! 당신의 배려에 모두가 감동합니다." 
+  },
+  { 
+    id: 8, name: "직진하는 불도저 리더", emoji: "🚜", color: "#FFEBEE", borderColor: "#F44336", 
+    factBombs: ["일단 지르고 봄", "시간은 금이다", "경쟁에서 져본 적 없음", "결과로 승부함", "추진력 탱크급", "결단력 장인", "리더십 과잉", "워커홀릭 유망주"], 
+    description: "강력한 추진력으로 목표를 향해 거침없이 나아가는 승부사! 당신이 결심하면 불가능이란 없습니다." 
+  },
+  { 
+    id: 9, name: "여유만만 나무늘보 분석가", emoji: "🦥", color: "#EFEBE9", borderColor: "#795548", 
+    factBombs: ["세월아 네월아", "촌철살인 유머", "귀차니즘 대가", "생각은 우주급", "마감 직전 초능력", "지식 습득이 취미", "논리 왕국 건설", "무념무상"], 
+    description: "느긋해 보이지만 머릿속은 끊임없이 가동되는 지적인 분석가! 엉뚱하지만 날카로운 통찰력으로 사람들을 놀라게 합니다." 
+  },
+  { 
+    id: 10, name: "흥 넘치는 파티피플 댄서", emoji: "💃", color: "#FFF9C4", borderColor: "#FFEB3B", 
+    factBombs: ["주목받는 게 인생의 낙", "지금 이 순간 중요", "쇼핑은 나의 힘", "리액션 부자", "인생은 욜로", "관종력 만렙", "긍정 파워 뿜뿜", "지루함은 죄악"], 
+    description: "어디서나 존재감을 발휘하며 주변을 즐겁게 만드는 타고난 연예인! 당신과 함께라면 지루할 틈이 없죠." 
+  },
+  { 
+    id: 11, name: "정의로운 보안관 곰", emoji: "🐻", color: "#ECEFF1", borderColor: "#607D8B", 
+    factBombs: ["법 없이도 살 사람", "규칙은 생명", "강강약약", "일 처리는 칼같이", "꼰대 소리 가끔 들음", "책임감 무한대", "팩트 폭격기", "의리 빼면 시체"], 
+    description: "확고한 신념과 책임감으로 사회의 질서를 유지하는 든든한 기둥! 당신이 있어 우리 사회가 안전합니다." 
+  },
+  { 
+    id: 12, name: "다정한 솜사탕 외교관", emoji: "🍭", color: "#FCE4EC", borderColor: "#F06292", 
+    factBombs: ["모든 소문은 나에게로", "기념일 절대 안 잊음", "함께 먹어야 맛있음", "사랑 갈구형", "눈치가 너무 빠름", "거절이 제일 힘듦", "프로 수발러", "인맥 관리왕"], 
+    description: "풍부한 공감 능력으로 조화로운 인간관계를 만들어가는 친절한 외교관! 당신의 다정함은 최고의 무기입니다." 
+  },
+  { 
+    id: 13, name: "호기심 많은 사고뭉치 원숭이", emoji: "🐒", color: "#E0F2F1", borderColor: "#26A69A", 
+    factBombs: ["말싸움 1등", "기존 방식 거부", "토론이 제일 재밌음", "천재 혹은 변태", "말주변이 화려함", "도전 정신 과잉", "임기응변 달인", "뒷감당은 나중에"], 
+    description: "고정관념을 깨부수는 혁신가! 기발한 생각과 유머 감각으로 늘 새로운 즐거움을 창조합니다." 
+  },
+  { 
+    id: 14, name: "단단한 바위 산 해결사", emoji: "⛰️", color: "#E1F5FE", borderColor: "#0288D1", 
+    factBombs: ["이론보다 실전", "기계 잘 고침", "말보다 몸이 먼저", "쿨함의 결정체", "무미건조한 말투", "독고다이 정신", "적응력 우주급", "스릴 중독"], 
+    description: "적은 말수로 강렬한 존재감을 드러내는 실용적인 해결사! 위기 상황에서 가장 빛나는 실전파입니다." 
+  },
+  { 
+    id: 15, name: "조용한 카리스마 선지자", emoji: "🎭", color: "#F3E5F5", borderColor: "#7B1FA2", 
+    factBombs: ["속을 알 수 없음", "완벽주의적 배려", "혼자서 생각 많음", "직관이 무서움", "인간관계 좁고 깊게", "이상적인 삶 추구", "비밀이 많음", "내면의 열정"], 
+    description: "깊은 통찰력과 확고한 신념을 바탕으로 묵묵히 자신의 길을 가는 선지자! 당신의 깊이는 가늠할 수 없습니다." 
+  },
+  { 
+    id: 16, name: "에너지 뿜뿜 액티브 모험가", emoji: "🏃", color: "#FFF3E0", borderColor: "#E64A19", 
+    factBombs: ["운동은 내 운명", "말주변이 화려함", "위기에 강함", "즉흥적인 즐거움", "활동적인 취미", "승부욕 폭발", "솔직담백함", "경험이 최고다"], 
+    description: "두려움 없이 새로운 것에 도전하는 활동적인 모험가! 당신의 에너지는 주변 사람들을 움직이게 합니다." 
+  },
+  { 
+    id: 17, name: "차분한 팩트 폭격기 고양이", emoji: "🐈", color: "#F5F5F5", borderColor: "#757575", 
+    factBombs: ["사회적 가면 필수", "지식 습득이 취미", "감정 소모 혐오", "정확한게 최고", "예리한 눈썰미", "츤데레 매력", "자기애가 넘침", "침착한 광기"], 
+    description: "한 발짝 물러나 세상을 관찰하고 분석하는 똑똑한 고양이! 당신의 차분함 속에 예리함이 숨어 있습니다." 
+  },
+  { 
+    id: 18, name: "반짝이는 별빛 요정", emoji: "🌸", color: "#FCE4EC", borderColor: "#EC407A", 
+    factBombs: ["작은 것에도 감동", "일기 쓰기가 취미", "예술적 감각", "마음이 유리구슬", "의미 부여 끝판왕", "평화로운 영혼", "나만의 아지트", "프로 망상러"], 
+    description: "아름다운 것을 사랑하고 내면의 목소리에 귀를 기울이는 감성적인 요정! 당신의 세상은 무지개색입니다." 
+  },
+  { 
+    id: 19, name: "웃음 제조기 행복 판다", emoji: "🐼", color: "#E8F5E9", borderColor: "#43A047", 
+    factBombs: ["귀여움이 무기", "어딜가나 환영", "단순한게 최고", "금방 까먹음", "친화력 대폭발", "잠이 보약이다", "낙천적인 태도", "고민은 3초만"], 
+    description: "존재 자체가 주변 사람들에게 큰 위로와 웃음이 되는 행복한 판다! 당신 덕분에 세상이 따뜻해집니다." 
+  },
+  { 
+    id: 20, name: "스마트한 임기응변 여우", emoji: "🦊", color: "#FFFDE7", borderColor: "#F9A825", 
+    factBombs: ["눈치가 엄청 빠름", "재치 있는 유머", "임기응변 달인", "사람 잘 꼬심", "정보 습득력 1등", "재주가 많음", "위기 탈출 넘버원", "영리한 승부사"], 
+    description: "비상한 두뇌와 매력으로 어떤 상황도 유연하게 넘기는 영리한 여우! 당신의 재치는 모두를 감탄하게 합니다." 
+  }
 ];
 
 function App() {
@@ -223,10 +302,9 @@ function App() {
     if (currentQuestion < QUESTIONS.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // Map score (15 to 60) to 20 results (0 to 19 index)
       const finalScore = nextScore;
-      // Formula: (score - minScore) / (maxScore - minScore) * (numResults - 1)
-      let index = Math.floor(((finalScore - 15) / 45) * 20);
+      // Map 15-60 score to 20 results (0 to 19 index)
+      let index = Math.floor(((finalScore - 15) / 46) * 20);
       if (index < 0) index = 0;
       if (index > 19) index = 19;
       
@@ -295,7 +373,6 @@ function App() {
                 <div className="sticker-main">
                   <span className="sticker-emoji">{result.emoji}</span>
                   <h2 className="sticker-name">{result.name}</h2>
-                  <div className="sticker-mbti">{result.mbti}</div>
                 </div>
 
                 <div className="bombs-grid">
