@@ -79,7 +79,7 @@ body {
   max-width: 300px;
   padding: 15px 25px;
   border-radius: 20px;
-  border: 3px solid #f1f2f6;
+  border: 4px solid #f1f2f6;
   font-size: 1.1rem;
   font-weight: 700;
   text-align: center;
@@ -174,7 +174,7 @@ body {
   transform: scale(1.02);
 }
 
-/* Result View - Sticker Style */
+/* Result View - Enhanced Sticker Style */
 .result-view {
   text-align: center;
   animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -182,110 +182,124 @@ body {
 
 .sticker-container {
   background: white;
-  padding: 10px;
-  border-radius: 30px;
+  padding: 8px;
+  border-radius: 40px;
   position: relative;
-  box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
+  box-shadow: 12px 12px 0px rgba(0,0,0,0.1);
   margin-bottom: 40px;
-  border: 10px solid white;
-  transform: rotate(-2deg);
+  border: 12px solid var(--border-color);
+  transform: rotate(-1deg);
+  overflow: hidden;
 }
 
 .sticker-body {
-  border: 4px dashed #dfe6e9;
-  border-radius: 20px;
-  padding: 30px 15px;
+  border: 3px dashed rgba(0,0,0,0.1);
+  border-radius: 30px;
+  padding: 40px 20px;
   background-color: var(--sticker-color);
+  background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.4) 1px, transparent 0);
+  background-size: 20px 20px;
 }
 
 .user-greeting {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-gray);
-  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #2d3436;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
 }
 
 .user-greeting span {
   background: white;
-  padding: 2px 8px;
-  border-radius: 8px;
-  color: #2d3436;
+  padding: 4px 12px;
+  border-radius: 12px;
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.05);
 }
 
 .sticker-main {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .sticker-emoji {
-  font-size: 5rem;
+  font-size: 6.5rem;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  filter: drop-shadow(5px 5px 0px rgba(255,255,255,0.8));
   animation: bounce 2s infinite;
 }
 
 .sticker-name {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 900;
   color: #2d3436;
-  text-shadow: 2px 2px 0px white;
-  margin-bottom: 5px;
+  text-shadow: 3px 3px 0px white;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
 }
 
 .sticker-mbti {
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: 1.3rem;
+  font-weight: 900;
   background: #2d3436;
   color: white;
   display: inline-block;
-  padding: 4px 15px;
+  padding: 6px 20px;
   border-radius: 50px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
 }
 
 .bombs-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin-bottom: 35px;
 }
 
 .mini-bubble {
   background: white;
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 800;
-  box-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+  padding: 10px 18px;
+  border-radius: 18px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+  border: 2px solid #2d3436;
+  transform: rotate(calc(var(--i, 0) * 2deg));
 }
 
+.mini-bubble:nth-child(even) { transform: rotate(2deg); }
+.mini-bubble:nth-child(odd) { transform: rotate(-2deg); }
+
 .final-desc {
-  background: rgba(255,255,255,0.6);
-  padding: 20px;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.6;
+  background: white;
+  padding: 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.7;
   color: #2d3436;
   word-break: keep-all;
+  border: 3px solid #2d3436;
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.05);
 }
 
 .btn-retry {
   width: 100%;
   background: #2d3436;
   color: white;
-  padding: 18px;
+  padding: 22px;
   border-radius: 50px;
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 900;
   border: none;
   cursor: pointer;
-  font-size: 1.1rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: all 0.2s;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .btn-retry:hover {
-  transform: translateY(-3px);
+  transform: scale(1.05);
   background: #ff7675;
 }
 
@@ -297,7 +311,7 @@ body {
 
 @keyframes bounce {
   0%, 100% { transform: scale(1) rotate(0); }
-  50% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(1.1) rotate(3deg); }
 }
 
 @keyframes fadeIn {
@@ -319,5 +333,6 @@ body {
 
 @media (max-width: 480px) {
   .hero h1 { font-size: 2.2rem; }
-  .sticker-name { font-size: 1.8rem; }
+  .sticker-name { font-size: 1.9rem; }
+  .sticker-emoji { font-size: 5rem; }
 }
