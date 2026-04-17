@@ -259,18 +259,20 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 40px;
+  gap: 8px;
+  margin-bottom: 35px;
+  max-width: 100%;
 }
 
 .mini-bubble {
   background: white;
-  padding: 12px 20px;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  font-weight: 900;
-  box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
-  border: 3px solid #2d3436;
+  padding: 8px 14px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  border: 2.5px solid #2d3436;
+  white-space: nowrap;
 }
 
 .mini-bubble:nth-child(even) { transform: rotate(3deg); }
