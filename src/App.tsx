@@ -77,8 +77,8 @@ const QUESTIONS: Question[] = [
 const PERSONAS: Persona[] = [
   {
     id: 1,
-    name: "에너지 세이버 판다",
-    emoji: "🐼",
+    name: "침대 위 눕방 휴식형",
+    emoji: "🛌",
     color: "#F5F5F5",
     subColor: "#E0E0E0",
     factBombs: [
@@ -91,22 +91,22 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 2,
-    name: "프로 계획러 다람쥐",
-    emoji: "🐿️",
+    name: "분단위 루틴 설계자",
+    emoji: "⏱️",
     color: "#FFF3E0",
     subColor: "#FFE0B2",
     factBombs: [
       "기록 안 하면 불안함", "비효율적인 거 못 참음", "메모광 수집가", "철저한 시간 엄수",
       "완벽한 루틴 추구", "변수는 나의 적", "정리정돈의 달인", "미래 설계 장인",
       "1분 단위 스케줄", "꼼꼼함의 끝판왕", "남들 눈엔 피곤", "준비성 하나는 1등",
-      "계획대로 안 되면 멘붕", "꼼수 부리기 싫어함", "도토리 갯수도 다 셈"
+      "계획대로 안 되면 멘붕", "꼼수 부리기 싫어함", "체크리스트 강박"
     ],
     description: "머릿속에 항상 체크리스트가 돌아가는 당신! 준비성이 철저해 신뢰를 받아요."
   },
   {
     id: 3,
-    name: "세심한 관찰자 고양이",
-    emoji: "🐱",
+    name: "꼼꼼한 식단 분석가",
+    emoji: "🥗",
     color: "#FCE4EC",
     subColor: "#F8BBD0",
     factBombs: [
@@ -115,12 +115,12 @@ const PERSONAS: Persona[] = [
       "은근히 뒤끝 있음", "친해지면 수다쟁이", "상처 잘 받는 편", "눈치 백단 만렙",
       "취향 확고한 타입", "먼저 연락 안 함", "선 넘으면 칼차단"
     ],
-    description: "까칠해 보이지만 사실은 누구보다 속이 깊고 따뜻한 사람이에요."
+    description: "섬세하고 예민한 감각을 가진 당신! 자신만의 확고한 기준과 취향을 가지고 있어요."
   },
   {
     id: 4,
-    name: "인간 비타민 댕댕이",
-    emoji: "🐶",
+    name: "파이팅 넘치는 에너지형",
+    emoji: "🔥",
     color: "#FFFDE7",
     subColor: "#FFF9C4",
     factBombs: [
@@ -133,8 +133,8 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 5,
-    name: "냉철한 분석가 여우",
-    emoji: "🦊",
+    name: "스마트 팩트 지향형",
+    emoji: "🧠",
     color: "#FFEBEE",
     subColor: "#FFCDD2",
     factBombs: [
@@ -147,22 +147,22 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 6,
-    name: "내적 열정 햄스터",
-    emoji: "🐹",
+    name: "조용한 열정 노력파",
+    emoji: "💪",
     color: "#FCE4EC",
     subColor: "#F8BBD0",
     factBombs: [
       "겉바속촉 성격", "소심한 관종", "속으로 내적 댄스", "칭찬에 춤추는 편",
       "걱정은 태산만큼", "남 시선 많이 의식", "조용한 카리스마", "은근히 질투쟁이",
       "세심한 배려 끝판왕", "혼자서 생각 많음", "먼저 말 걸기 힘듦", "알고보면 인싸",
-      "기록하는 습관", "해바라기씨 같은 소확행", "따뜻한 응원 필요"
+      "기록하는 습관", "작지만 확실한 소확행", "따뜻한 응원 필요"
     ],
-    description: "작고 소중한 존재 같지만 내면에는 누구보다 큰 열정을 품고 있어요."
+    description: "겉으로 드러내진 않지만 내면에는 누구보다 큰 열정과 의지를 품고 있어요."
   },
   {
     id: 7,
-    name: "당당한 리더 호랑이",
-    emoji: "🐯",
+    name: "거침없는 직진 행동파",
+    emoji: "🚀",
     color: "#FFF3E0",
     subColor: "#FFE0B2",
     factBombs: [
@@ -175,8 +175,8 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 8,
-    name: "신중한 토끼",
-    emoji: "🐰",
+    name: "돌다리 신중 체크형",
+    emoji: "🔍",
     color: "#E1F5FE",
     subColor: "#B3E5FC",
     factBombs: [
@@ -189,8 +189,8 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 9,
-    name: "여유로운 나무늘보",
-    emoji: "🦥",
+    name: "느긋한 마이페이스형",
+    emoji: "🧘",
     color: "#EFEBE9",
     subColor: "#D7CCC8",
     factBombs: [
@@ -203,22 +203,22 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 10,
-    name: "따뜻한 조언가 코끼리",
-    emoji: "🐘",
+    name: "함께 걷는 페이스메이커",
+    emoji: "🤝",
     color: "#ECEFF1",
     subColor: "#CFD8DC",
     factBombs: [
-      "상담 요청 1순위", "남 챙기기 전문가", "공감 능력 200%", "오지랖도 사랑",
+      "상담 요청 1순위", "남 챙기기 전문가", "공감 능력 200%", "오지떱도 사랑",
       "거절 못해 고민", "기억력 생각보다 좋음", "정의로운 마음씨", "믿음직한 버팀목",
       "포용력 있는 성격", "화나면 은근 무서움", "인간관계가 재산", "감수성 풍부함",
       "남 일에 진심인 편", "참견과 배려 사이", "듬직한 존재감"
     ],
-    description: "넓은 마음으로 주변을 품어주는 당신! 당신 덕분에 세상이 따뜻해져요."
+    description: "넓은 마음으로 주변을 품어주는 당신! 당신 덕분에 주변이 따뜻해져요."
   },
   {
     id: 11,
-    name: "꿈꾸는 고래",
-    emoji: "🐳",
+    name: "이상적인 몽상 다이어터",
+    emoji: "☁️",
     color: "#E3F2FD",
     subColor: "#BBDEFB",
     factBombs: [
@@ -231,8 +231,8 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 12,
-    name: "열정의 화신 사자",
-    emoji: "🦁",
+    name: "주인공 본능 챌린저",
+    emoji: "👑",
     color: "#FFF3E0",
     subColor: "#FFE0B2",
     factBombs: [
@@ -245,8 +245,8 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 13,
-    name: "지적인 부엉이",
-    emoji: "🦉",
+    name: "독립적인 전략가 타입",
+    emoji: "🎯",
     color: "#F3E5F5",
     subColor: "#E1BEE7",
     factBombs: [
@@ -259,22 +259,22 @@ const PERSONAS: Persona[] = [
   },
   {
     id: 14,
-    name: "사랑스러운 병아리",
-    emoji: "🐥",
+    name: "보호가 필요한 비기너",
+    emoji: "🌱",
     color: "#FFFDE7",
     subColor: "#FFF9C4",
     factBombs: [
-      "도움 주는 재미", "애교 섞인 말투", "의존적인 귀요미", "보호본능 자극",
+      "도움 주는 재미", "애교 섞인 말투", "의존적인 타입", "보호본능 자극",
       "순수한 마음씨", "겁이 많은 편", "작은 거에도 행복", "함께하는 게 좋아",
       "눈물도 웃음도 많음", "응원이 필요한 타입", "솔직한 감정표현", "세상 순진무구",
-      "조금 서툰 편", "함께 있을 때 힘남", "사랑 갈구형"
+      "조금 서툰 편", "함께 있을 때 힘남", "애정 갈구형"
     ],
-    description: "존재 자체만으로도 주변을 밝고 귀엽게 만드는 마스코트 같은 사람이에요."
+    description: "존재 자체만으로도 주변을 밝고 따뜻하게 만드는 매력이 있는 사람이에요."
   },
   {
     id: 15,
-    name: "에너제틱 원숭이",
-    emoji: "🐒",
+    name: "다재다능 잡학 챌린저",
+    emoji: "🌈",
     color: "#EFEBE9",
     subColor: "#D7CCC8",
     factBombs: [
@@ -323,8 +323,8 @@ function App() {
           <div className="landing-view">
             <div className="hero">
               <div className="main-character-float">✨</div>
-              <h1>내 안의 숨은 <br/><span>동물 캐릭터 찾기</span></h1>
-              <p>아기자기한 동물 친구가 알려주는 <br/>나의 진짜 성격 특징 테스트</p>
+              <h1>나에게 꼭 맞는 <br/><span>퍼스널 핏 & 루틴 진단</span></h1>
+              <p>내 라이프스타일에 최적화된 <br/>나만의 다이어트 성향 테스트</p>
               <button className="btn-start" onClick={startQuiz}>테스트 시작하기 &rarr;</button>
             </div>
           </div>
